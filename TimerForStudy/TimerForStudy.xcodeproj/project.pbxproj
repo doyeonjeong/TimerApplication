@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B1ECC4529349080007318DB /* KakaoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1ECC4429349080007318DB /* KakaoLoginViewModel.swift */; };
+		6B1ECC482934922E007318DB /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 6B1ECC472934922E007318DB /* KakaoSDKUser */; };
+		6B44846D29348CF50025260C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44846C29348CF50025260C /* LoginViewController.swift */; };
 		E11BFEA929345A700017FBB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11BFEA829345A700017FBB0 /* AppDelegate.swift */; };
 		E11BFEAB29345A700017FBB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11BFEAA29345A700017FBB0 /* SceneDelegate.swift */; };
 		E11BFEAD29345A700017FBB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11BFEAC29345A700017FBB0 /* ViewController.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B1ECC4429349080007318DB /* KakaoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginViewModel.swift; sourceTree = "<group>"; };
+		6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = KakaoLoginConfig.xcconfig; sourceTree = "<group>"; };
+		6B44846C29348CF50025260C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E11BFEA529345A700017FBB0 /* TimerForStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerForStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11BFEA829345A700017FBB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E11BFEAA29345A700017FBB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B1ECC482934922E007318DB /* KakaoSDKUser in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B44846B29348C7F0025260C /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				6B6A29052935AF90009D8905 /* Login */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		6B6A29052935AF90009D8905 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6B44846C29348CF50025260C /* LoginViewController.swift */,
+				6B1ECC4429349080007318DB /* KakaoLoginViewModel.swift */,
+				6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		E11BFE9C29345A700017FBB0 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +126,7 @@
 		E11BFEA729345A700017FBB0 /* TimerForStudy */ = {
 			isa = PBXGroup;
 			children = (
+				6B44846B29348C7F0025260C /* Account */,
 				E11BFEDC29345B9D0017FBB0 /* Extension */,
 				E11BFEDB29345B840017FBB0 /* Resources */,
 				E11BFEA829345A700017FBB0 /* AppDelegate.swift */,
@@ -163,6 +189,9 @@
 			dependencies = (
 			);
 			name = TimerForStudy;
+			packageProductDependencies = (
+				6B1ECC472934922E007318DB /* KakaoSDKUser */,
+			);
 			productName = TimerForStudy;
 			productReference = E11BFEA529345A700017FBB0 /* TimerForStudy.app */;
 			productType = "com.apple.product-type.application";
@@ -235,6 +264,9 @@
 				Base,
 			);
 			mainGroup = E11BFE9C29345A700017FBB0;
+			packageReferences = (
+				6B1ECC462934922E007318DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+			);
 			productRefGroup = E11BFEA629345A700017FBB0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -301,6 +333,8 @@
 				E11BFEAD29345A700017FBB0 /* ViewController.swift in Sources */,
 				E11BFEA929345A700017FBB0 /* AppDelegate.swift in Sources */,
 				E11BFEAB29345A700017FBB0 /* SceneDelegate.swift in Sources */,
+				6B44846D29348CF50025260C /* LoginViewController.swift in Sources */,
+				6B1ECC4529349080007318DB /* KakaoLoginViewModel.swift in Sources */,
 				E11BFEB329345A700017FBB0 /* TimerForStudy.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +393,7 @@
 /* Begin XCBuildConfiguration section */
 		E11BFED029345A720017FBB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -419,6 +454,7 @@
 		};
 		E11BFED129345A720017FBB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -473,6 +509,7 @@
 		};
 		E11BFED329345A720017FBB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -503,6 +540,7 @@
 		};
 		E11BFED429345A720017FBB0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -647,6 +685,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6B1ECC462934922E007318DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6B1ECC472934922E007318DB /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B1ECC462934922E007318DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E11BFEB129345A700017FBB0 /* TimerForStudy.xcdatamodeld */ = {
