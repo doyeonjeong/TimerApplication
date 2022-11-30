@@ -11,8 +11,8 @@ import Combine
 final class LoginViewController: UIViewController {
     
     // MARK: - Properties
-    private var kakaoLoginViewModel = KakaoLoginViewModel()
-    private var subscriptions = [AnyCancellable]()
+    private lazy var kakaoLoginManager = KakaoLoginManager()
+    private lazy var subscriptions = [AnyCancellable]()
     
     private var loginButtonStackView: UIStackView = {
         let stackView = UIStackView()
@@ -32,14 +32,26 @@ final class LoginViewController: UIViewController {
         button.setBackgroundImage(UIImage(named: "kakaologinimage"), for: .normal)
         button.addTarget(self, action: #selector(kakaoLogin), for: .touchUpInside)
         
+        button.addConstraints([
+            button.widthAnchor.constraint(equalToConstant: LayoutConstants.buttonWidth),
+            button.heightAnchor.constraint(equalToConstant: LayoutConstants.buttonHeight)
+        ])
+        
         return button
+    }()
+    
+    private lazy var errorAlert: UIAlertController = {
+        let alert = UIAlertController(title: "오류", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "확인", style: .cancel))
+        
+        return alert
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setUpUI()
-        configure()
     }
     
     private func setUpUI() {
@@ -65,30 +77,49 @@ final class LoginViewController: UIViewController {
         ])
     }
     
-    private func configure() {
-        kakaoLoginViewModel.userIdPublisher.sink { id in
-            // Handling User ID
-            print("User ID: \(id)")
+    private func alertWillAppear(_ message: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            if !self.errorAlert.isBeingPresented {
+                self.errorAlert.message = message
+                self.present(self.errorAlert, animated: true)
+            }
         }
-        .store(in: &subscriptions)
-        
-        kakaoLoginViewModel.userNicknamePublisher.sink { nickname in
-            // Handling User Nickname
-            print("User Nickname: \(nickname)")
-        }
-        .store(in: &subscriptions)
     }
 }
 
 // MARK: - Button Action
 extension LoginViewController {
     @objc func kakaoLogin() {
-        kakaoLoginViewModel.kakaoLogin()
+        kakaoLoginManager.userInformationPublisher.sink(receiveCompletion: { [weak self] error in
+            guard let self = self else { return }
+            switch error {
+            case .failure(.loginError):
+                self.alertWillAppear(self.kakaoLoginManager.convertErrorToMessage(.loginError))
+            case .failure(.logoutError):
+                self.alertWillAppear(self.kakaoLoginManager.convertErrorToMessage(.logoutError))
+            case .failure(.informationFetchError):
+                self.alertWillAppear(self.kakaoLoginManager.convertErrorToMessage(.informationFetchError))
+            case .failure(.idFetchError):
+                self.alertWillAppear(self.kakaoLoginManager.convertErrorToMessage(.idFetchError))
+            case .failure(.nicknameFetchError):
+                self.alertWillAppear(self.kakaoLoginManager.convertErrorToMessage(.nicknameFetchError))
+            case .failure(.undefined):
+                self.alertWillAppear(self.kakaoLoginManager.convertErrorToMessage(.undefined))
+            case .finished:
+                break
+            }
+        }, receiveValue: { information in
+            dump(information)
+        })
+        .store(in: &subscriptions)
+        
+        kakaoLoginManager.login()
     }
 }
 
 private struct LayoutConstants {
     static let buttonOffset: CGFloat = 20
     static let buttonWidth: CGFloat = 280
-    static let buttonHeight: CGFloat = 60
+    static let buttonHeight: CGFloat = 45
 }

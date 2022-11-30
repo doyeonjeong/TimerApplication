@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B1ECC4529349080007318DB /* KakaoLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1ECC4429349080007318DB /* KakaoLoginViewModel.swift */; };
+		6B1ECC4529349080007318DB /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1ECC4429349080007318DB /* KakaoLoginManager.swift */; };
 		6B1ECC482934922E007318DB /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 6B1ECC472934922E007318DB /* KakaoSDKUser */; };
 		6B44846D29348CF50025260C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44846C29348CF50025260C /* LoginViewController.swift */; };
 		6B6A290A2935BA65009D8905 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6B6A29092935BA65009D8905 /* .swiftlint.yml */; };
@@ -42,7 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6B1ECC4429349080007318DB /* KakaoLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginViewModel.swift; sourceTree = "<group>"; };
+		6B1ECC4429349080007318DB /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = KakaoLoginConfig.xcconfig; sourceTree = "<group>"; };
 		6B44846C29348CF50025260C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6B6A29092935BA65009D8905 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				6B44846C29348CF50025260C /* LoginViewController.swift */,
-				6B1ECC4429349080007318DB /* KakaoLoginViewModel.swift */,
+				6B1ECC4429349080007318DB /* KakaoLoginManager.swift */,
 				6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */,
 			);
 			path = Login;
@@ -183,7 +183,7 @@
 			isa = PBXGroup;
 			children = (
 			);
-			path = Extension;
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,7 +349,7 @@
 				E11BFEA929345A700017FBB0 /* AppDelegate.swift in Sources */,
 				E11BFEAB29345A700017FBB0 /* SceneDelegate.swift in Sources */,
 				6B44846D29348CF50025260C /* LoginViewController.swift in Sources */,
-				6B1ECC4529349080007318DB /* KakaoLoginViewModel.swift in Sources */,
+				6B1ECC4529349080007318DB /* KakaoLoginManager.swift in Sources */,
 				E11BFEB329345A700017FBB0 /* TimerForStudy.xcdatamodeld in Sources */,
 				6B6A290D2935BE2C009D8905 /* Account.swift in Sources */,
 			);

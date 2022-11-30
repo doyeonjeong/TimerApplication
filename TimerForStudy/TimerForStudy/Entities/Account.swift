@@ -8,6 +8,11 @@
 import Foundation
 
 struct Account {
-    var id: Int
+    var id: String
     var nickname: String
+    
+    init(_ id: String, _ nickname: String) {
+        self.id = id
+        self.nickname = nickname
+    }
 }
