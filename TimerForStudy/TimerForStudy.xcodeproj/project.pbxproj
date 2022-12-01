@@ -42,8 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B013BBB293848AB0071D525 /* KakaoLoginConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = KakaoLoginConfig.xcconfig; sourceTree = "<group>"; };
+		6B013BBC293849700071D525 /* TimerForStudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimerForStudy.entitlements; sourceTree = "<group>"; };
 		6B1ECC4429349080007318DB /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
-		6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = KakaoLoginConfig.xcconfig; sourceTree = "<group>"; };
 		6B44846C29348CF50025260C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6B6A29092935BA65009D8905 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		6B6A290C2935BE2C009D8905 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -102,7 +103,7 @@
 			children = (
 				6B44846C29348CF50025260C /* LoginViewController.swift */,
 				6B1ECC4429349080007318DB /* KakaoLoginManager.swift */,
-				6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */,
+				6B013BBB293848AB0071D525 /* KakaoLoginConfig.xcconfig */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -138,6 +139,7 @@
 		E11BFEA729345A700017FBB0 /* TimerForStudy */ = {
 			isa = PBXGroup;
 			children = (
+				6B013BBC293849700071D525 /* TimerForStudy.entitlements */,
 				6B6A290B2935BD6C009D8905 /* Entities */,
 				6B44846B29348C7F0025260C /* Account */,
 				E11BFEDC29345B9D0017FBB0 /* Extension */,
@@ -409,7 +411,6 @@
 /* Begin XCBuildConfiguration section */
 		E11BFED029345A720017FBB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -470,7 +471,6 @@
 		};
 		E11BFED129345A720017FBB0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -525,13 +525,13 @@
 		};
 		E11BFED329345A720017FBB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TimerForStudy/TimerForStudy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5KZ5C4UW39;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimerForStudy/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -556,13 +556,13 @@
 		};
 		E11BFED429345A720017FBB0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B1ECC492934960C007318DB /* KakaoLoginConfig.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TimerForStudy/TimerForStudy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5KZ5C4UW39;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimerForStudy/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";

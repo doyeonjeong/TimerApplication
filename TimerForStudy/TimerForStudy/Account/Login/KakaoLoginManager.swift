@@ -23,27 +23,6 @@ struct KakaoLoginManager {
         case informationFetchError
         case idFetchError
         case nicknameFetchError
-        case undefined
-    }
-    
-    /// 에러를 Alert 메시지로 변환
-    /// - Parameter error: 에러
-    /// - Returns: 메시지
-    func convertErrorToMessage(_ error: KakaoLoginError) -> String {
-        switch error {
-        case .loginError:
-            return "로그인 과정에서 오류가 발생했습니다."
-        case .logoutError:
-            return "로그아웃 과정에서 오류가 발생했습니다."
-        case .informationFetchError:
-            return "정보를 가져오지 못했습니다."
-        case .idFetchError:
-            return "회원번호를 가져오지 못했습니다."
-        case .nicknameFetchError:
-            return "닉네임을 가져오지 못했습니다."
-        case .undefined:
-            return "알 수 없는 오류가 발생했습니다."
-        }
     }
     
     func login() {
