@@ -9,7 +9,18 @@ import UIKit
 
 class TimerViewController: UIViewController {
 
+    let timeManager = TimeManager.shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        timeManager.startTimer()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.view.backgroundColor = .systemBackground
+        
+    }
+    
+    
 }
