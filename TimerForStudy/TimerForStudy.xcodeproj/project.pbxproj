@@ -32,6 +32,7 @@
 		E13730B029485BE600EE804A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13730AF29485BE600EE804A /* NetworkManager.swift */; };
 		E13730B229485C0800EE804A /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13730B129485C0800EE804A /* Reachability.swift */; };
 		E13730B429485C4500EE804A /* ShareConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13730B329485C4500EE804A /* ShareConstant.swift */; };
+		E1982D6D29486C5B008EE0DF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E1982D6C29486C5B008EE0DF /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B1ECC482934922E007318DB /* KakaoSDKUser in Frameworks */,
+				E1982D6D29486C5B008EE0DF /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +279,7 @@
 			name = TimerForStudy;
 			packageProductDependencies = (
 				6B1ECC472934922E007318DB /* KakaoSDKUser */,
+				E1982D6C29486C5B008EE0DF /* Lottie */,
 			);
 			productName = TimerForStudy;
 			productReference = E11BFEA529345A700017FBB0 /* TimerForStudy.app */;
@@ -352,6 +355,7 @@
 			mainGroup = E11BFE9C29345A700017FBB0;
 			packageReferences = (
 				6B1ECC462934922E007318DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				E1982D6B29486C5B008EE0DF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = E11BFEA629345A700017FBB0 /* Products */;
 			projectDirPath = "";
@@ -791,6 +795,14 @@
 				kind = branch;
 			};
 		};
+		E1982D6B29486C5B008EE0DF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -798,6 +810,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6B1ECC462934922E007318DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		E1982D6C29486C5B008EE0DF /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E1982D6B29486C5B008EE0DF /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 
