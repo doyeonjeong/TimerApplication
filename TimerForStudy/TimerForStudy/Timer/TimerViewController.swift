@@ -13,7 +13,7 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeManager.startTimer()
+        timeManager.startTimer() // testcode
     }
     
     override func viewWillAppear(_ animated: Bool) {

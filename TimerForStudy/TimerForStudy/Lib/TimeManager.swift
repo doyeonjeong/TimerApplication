@@ -20,7 +20,7 @@ final class TimeManager {
         self.startTime = Date.now
     }
     
-    
+    // Timer Scheduler Test Code
     @objc func toast(){
         guard let time = self.passTime else{return}
         

@@ -10,9 +10,9 @@ import UIKit
 
 extension UIView{
     
+    // Method : 토스트메시지
     func displayToast(_ message : String, bottomSpace: CGFloat = 20.0) {
         guard let window = UIApplication.shared.windows.first else {return}
-        
         if let toast = window.subviews.first(where: { $0 is UILabel && $0.tag == -1001 }) {
             toast.removeFromSuperview()
         }

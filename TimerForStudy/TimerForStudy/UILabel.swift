@@ -8,6 +8,8 @@
 import UIKit
 
 extension UILabel {
+    
+    // Method - 라벨의 width, height을 리턴함
     func getWidthHeightByText() -> CGSize {
         var rect: CGRect = self.frame //get frame of label
         rect.size = (self.text?.size(withAttributes: [NSAttributedString.Key.font: UIFont(name: self.font.fontName , size: self.font.pointSize)!]))! //Calculate as per label font
