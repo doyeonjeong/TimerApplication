@@ -24,7 +24,7 @@ struct ChartsView: View {
             
             Chart(subjects) { subject in
                 BarMark(x: .value(TextConstants.xLabel, subject.name),
-                        y: .value(TextConstants.yLabel, subject.total)
+                        y: .value(TextConstants.yLabel, subject.total/NumberConstants.hour)
                 )
             }
         }
@@ -43,6 +43,10 @@ private enum TextConstants {
     static let cumulative = "누적"
     static let xLabel = "Name"
     static let yLabel = "Time"
+}
+
+private enum NumberConstants {
+    static let hour: Double = 3600
 }
 
 struct TotalCharts_Previews: PreviewProvider {
