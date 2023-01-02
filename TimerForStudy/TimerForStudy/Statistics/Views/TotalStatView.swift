@@ -16,16 +16,12 @@ struct TotalStatView: View {
             DescriptionView(total: stat.total)
                 .padding(LayoutConstants.offset)
             ChartsView(subjects: stat.subjects)
-                .frame(width: LayoutConstants.chartsWidth,
-                       height: LayoutConstants.chartsHeight)
         }
     }
 }
 
 private enum LayoutConstants {
     static let offset: CGFloat = 20
-    static let chartsWidth: CGFloat = 300
-    static let chartsHeight: CGFloat = 400
 }
 
 struct TotalStatView_Previews: PreviewProvider {
