@@ -1,7 +1,7 @@
 # Project
 
 
-* Target Version: iOS 15
+* Target Version: iOS 16
 * App Category: Education
 
 
