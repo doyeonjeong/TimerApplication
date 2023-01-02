@@ -7,31 +7,21 @@
 
 import UIKit
 import SwiftUI
+import FSCalendar
 
 class StatisticsViewController: UIViewController {
 
+    private let calendarView: FSCalendar = {
+        let calendar = FSCalendar()
+        return calendar
+    }()
+    
+    private var hostingController: UIHostingController<StatisticsView>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAndEmbedView()
-    }
-    
-    // Embed SwiftUI View
-    private func configureAndEmbedView() {
-        let statisticsView = StatisticsView()
-            .environmentObject(Self.createMockObject())
-        let hostingController = UIHostingController(rootView: statisticsView)
-        
-        self.addChild(hostingController)
-        self.view.addSubview(hostingController.view)
-        hostingController.didMove(toParent: self)
-        
-        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            hostingController.view.topAnchor.constraint(equalTo: view.topAnchor),
-            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        configureUI()
     }
     
     // SwiftUI View Model에 주입할 통계 데이터 가져오는 함수
@@ -47,4 +37,53 @@ class StatisticsViewController: UIViewController {
         
         return model
     }
+}
+
+// MARK: - Configure View
+extension StatisticsViewController {
+    private func configureUI() {
+        view.backgroundColor = .systemBackground
+        configureHierachy()
+        configureLayout()
+    }
+    
+    // Embed SwiftUI View
+    private func configureAndEmbedView() {
+        let data = Self.createMockObject()
+        let statisticsView = StatisticsView(stat: data)
+        hostingController = UIHostingController(rootView: statisticsView)
+        
+        addChild(hostingController)
+        hostingController.didMove(toParent: self)
+    }
+    
+    private func configureHierachy() {
+        [calendarView, hostingController.view].forEach {
+            view.addSubview($0)
+        }
+    }
+    
+    private func configureLayout() {
+        calendarView.translatesAutoresizingMaskIntoConstraints = false
+        hostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.offset),
+            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.offset),
+            calendarView.heightAnchor.constraint(equalToConstant: LayoutConstants.calendarViewHeight),
+            
+            hostingController.view.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: LayoutConstants.largeOffset),
+            hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.offset),
+            hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.offset),
+            hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -LayoutConstants.bottomOffset)
+        ])
+    }
+}
+
+private enum LayoutConstants {
+    static let offset: CGFloat = 8
+    static let largeOffset: CGFloat = 20
+    static let bottomOffset: CGFloat = 30
+    static let calendarViewHeight: CGFloat = 300
 }
