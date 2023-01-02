@@ -13,6 +13,7 @@
 		6B1B12462945AB3F00140F05 /* UserMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12452945AB3F00140F05 /* UserMainViewController.swift */; };
 		6B1ECC4529349080007318DB /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1ECC4429349080007318DB /* KakaoLoginManager.swift */; };
 		6B1ECC482934922E007318DB /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 6B1ECC472934922E007318DB /* KakaoSDKUser */; };
+		6B2788452963426200206392 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 6B2788442963426200206392 /* FSCalendar */; };
 		6B2D64C829620EF10009731C /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64C729620EF10009731C /* StatisticsView.swift */; };
 		6B2D64CA29622C170009731C /* TotalStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64C929622C170009731C /* TotalStatView.swift */; };
 		6B2D64CD29622E0D0009731C /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64CC29622E0D0009731C /* Statistics.swift */; };
@@ -103,6 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B1ECC482934922E007318DB /* KakaoSDKUser in Frameworks */,
+				6B2788452963426200206392 /* FSCalendar in Frameworks */,
 				E1982D6D29486C5B008EE0DF /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +308,7 @@
 			packageProductDependencies = (
 				6B1ECC472934922E007318DB /* KakaoSDKUser */,
 				E1982D6C29486C5B008EE0DF /* Lottie */,
+				6B2788442963426200206392 /* FSCalendar */,
 			);
 			productName = TimerForStudy;
 			productReference = E11BFEA529345A700017FBB0 /* TimerForStudy.app */;
@@ -382,6 +385,7 @@
 			packageReferences = (
 				6B1ECC462934922E007318DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				E1982D6B29486C5B008EE0DF /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				6B2788432963426200206392 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = E11BFEA629345A700017FBB0 /* Products */;
 			projectDirPath = "";
@@ -827,6 +831,14 @@
 				kind = branch;
 			};
 		};
+		6B2788432963426200206392 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		E1982D6B29486C5B008EE0DF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -842,6 +854,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6B1ECC462934922E007318DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
+		};
+		6B2788442963426200206392 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B2788432963426200206392 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
 		};
 		E1982D6C29486C5B008EE0DF /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
