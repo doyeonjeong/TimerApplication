@@ -144,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				6B2D64CB29622D840009731C /* Views */,
+				6B2D64CC29622E0D0009731C /* Statistics.swift */,
+				6B2D64CE29622EBF0009731C /* Subject.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -222,8 +224,6 @@
 				6B1B123B2945AA0900140F05 /* TabBar */,
 				6B1B12402945AAB500140F05 /* Profile */,
 				6B1B123F2945AA7500140F05 /* Statistics */,
-				6B2D64CC29622E0D0009731C /* Statistics.swift */,
-				6B2D64CE29622EBF0009731C /* Subject.swift */,
 				6B1B123E2945AA6B00140F05 /* Timer */,
 				6B6A290B2935BD6C009D8905 /* Entities */,
 				6B44846B29348C7F0025260C /* Account */,
