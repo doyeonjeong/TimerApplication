@@ -21,7 +21,7 @@ final class TabBarController: UITabBarController {
         let timerViewController = TimerViewController()
         let timerNavigationController = UINavigationController(rootViewController: timerViewController)
         
-        let profileViewController = ProfileViewController()
+        let profileViewController = UserMainViewController()
         let profileNavigationController = UINavigationController(rootViewController: profileViewController)
         
         statisticsNavigationController.tabBarItem = UITabBarItem(title: TitleConstants.statistics, image: UIImage(systemName: ImageName.statistics), tag: NumberConstants.first)

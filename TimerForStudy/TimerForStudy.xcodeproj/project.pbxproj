@@ -10,7 +10,7 @@
 		6B1B123D2945AA3600140F05 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B123C2945AA3600140F05 /* TabBarController.swift */; };
 		6B1B12422945AAFA00140F05 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12412945AAFA00140F05 /* TimerViewController.swift */; };
 		6B1B12442945AB2F00140F05 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12432945AB2F00140F05 /* StatisticsViewController.swift */; };
-		6B1B12462945AB3F00140F05 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12452945AB3F00140F05 /* ProfileViewController.swift */; };
+		6B1B12462945AB3F00140F05 /* UserMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12452945AB3F00140F05 /* UserMainViewController.swift */; };
 		6B1ECC4529349080007318DB /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1ECC4429349080007318DB /* KakaoLoginManager.swift */; };
 		6B1ECC482934922E007318DB /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 6B1ECC472934922E007318DB /* KakaoSDKUser */; };
 		6B2D64C829620EF10009731C /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64C729620EF10009731C /* StatisticsView.swift */; };
@@ -64,7 +64,7 @@
 		6B1B123C2945AA3600140F05 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6B1B12412945AAFA00140F05 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		6B1B12432945AB2F00140F05 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
-		6B1B12452945AB3F00140F05 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6B1B12452945AB3F00140F05 /* UserMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainViewController.swift; sourceTree = "<group>"; };
 		6B1ECC4429349080007318DB /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		6B2D64C729620EF10009731C /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		6B2D64C929622C170009731C /* TotalStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalStatView.swift; sourceTree = "<group>"; };
@@ -150,12 +150,12 @@
 			path = Statistics;
 			sourceTree = "<group>";
 		};
-		6B1B12402945AAB500140F05 /* Profile */ = {
+		6B1B12402945AAB500140F05 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				6B1B12452945AB3F00140F05 /* ProfileViewController.swift */,
+				6B1B12452945AB3F00140F05 /* UserMainViewController.swift */,
 			);
-			path = Profile;
+			path = User;
 			sourceTree = "<group>";
 		};
 		6B2D64CB29622D840009731C /* Views */ = {
@@ -222,7 +222,7 @@
 				6B013BBC293849700071D525 /* TimerForStudy.entitlements */,
 				E1373088294831C200EE804A /* Lib */,
 				6B1B123B2945AA0900140F05 /* TabBar */,
-				6B1B12402945AAB500140F05 /* Profile */,
+				6B1B12402945AAB500140F05 /* User */,
 				6B1B123F2945AA7500140F05 /* Statistics */,
 				6B1B123E2945AA6B00140F05 /* Timer */,
 				6B6A290B2935BD6C009D8905 /* Entities */,
@@ -459,7 +459,7 @@
 				6B1B123D2945AA3600140F05 /* TabBarController.swift in Sources */,
 				E11BFEA929345A700017FBB0 /* AppDelegate.swift in Sources */,
 				E11BFEAB29345A700017FBB0 /* SceneDelegate.swift in Sources */,
-				6B1B12462945AB3F00140F05 /* ProfileViewController.swift in Sources */,
+				6B1B12462945AB3F00140F05 /* UserMainViewController.swift in Sources */,
 				6B44846D29348CF50025260C /* LoginViewController.swift in Sources */,
 				6B2D64C829620EF10009731C /* StatisticsView.swift in Sources */,
 				6B1ECC4529349080007318DB /* KakaoLoginManager.swift in Sources */,
