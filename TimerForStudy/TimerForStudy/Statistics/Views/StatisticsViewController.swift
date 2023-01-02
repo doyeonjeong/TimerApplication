@@ -16,10 +16,17 @@ class StatisticsViewController: UIViewController {
         return calendar
     }()
     
+    private let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        return dateFormatter
+    }()
+    
     private var hostingController: UIHostingController<StatisticsView>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCalendar()
         configureAndEmbedView()
         configureUI()
     }
@@ -30,10 +37,10 @@ class StatisticsViewController: UIViewController {
     // For test
     // mock object 생성해서 주입
     static func createMockObject() -> Statistics {
-        let programmingData = Subject(name: "프로그래밍", total: 2000)
-        let algorithmData = Subject(name: "알고리즘", total: 1100)
-        let operatingSystemData = Subject(name: "운영체제", total: 900)
-        let model = Statistics(name: "Yeolmok", total: 4000, subjects: [programmingData, algorithmData, operatingSystemData])
+        let programmingData = Subject(name: "프로그래밍", total: 100000)
+        let algorithmData = Subject(name: "알고리즘", total: 55000)
+        let operatingSystemData = Subject(name: "운영체제", total: 45000)
+        let model = Statistics(name: "Yeolmok", total: 200000, subjects: [programmingData, algorithmData, operatingSystemData])
         
         return model
     }
@@ -73,17 +80,34 @@ extension StatisticsViewController {
             calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.offset),
             calendarView.heightAnchor.constraint(equalToConstant: LayoutConstants.calendarViewHeight),
             
-            hostingController.view.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: LayoutConstants.largeOffset),
+            hostingController.view.topAnchor.constraint(equalTo: calendarView.bottomAnchor),
             hostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.offset),
             hostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.offset),
             hostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -LayoutConstants.bottomOffset)
         ])
     }
+    
+    private func configureCalendar() {
+        calendarView.dataSource = self
+        calendarView.delegate = self
+    }
+}
+
+// MARK: - CanlendarView 관련
+extension StatisticsViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+    // 날짜 선택
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        //
+    }
+    
+    // 날짜 선택 해제
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        //
+    }
 }
 
 private enum LayoutConstants {
     static let offset: CGFloat = 8
-    static let largeOffset: CGFloat = 20
     static let bottomOffset: CGFloat = 30
     static let calendarViewHeight: CGFloat = 300
 }

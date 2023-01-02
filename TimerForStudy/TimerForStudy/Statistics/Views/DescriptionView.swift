@@ -13,10 +13,9 @@ struct DescriptionView: View {
     private let formatter = DateComponentsFormatter()
     
     var body: some View {
-        VStack {
+        HStack {
             Text(TextConstants.title)
                 .font(.system(.headline, weight: .bold))
-                .padding(LayoutConstants.offset)
             Text(formatter.string(from: total)!)
                 .font(.system(.subheadline, weight: .semibold))
         }
@@ -24,7 +23,7 @@ struct DescriptionView: View {
 }
 
 private enum TextConstants {
-    static let title = "총 공부 시간"
+    static let title = "Total"
 }
 
 private enum LayoutConstants {
