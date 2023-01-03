@@ -32,6 +32,6 @@ private enum LayoutConstants {
 
 struct DescriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        DescriptionView(total: StatViewController.createMockObject().total)
+        DescriptionView(total: statRowData.total)
     }
 }

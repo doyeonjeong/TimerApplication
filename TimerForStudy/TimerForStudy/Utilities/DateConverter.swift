@@ -9,6 +9,11 @@ import Foundation
 
 /// Date format 통일
 enum DateConverter {
+    static let monthFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM"
+        return dateFormatter
+    }()
     static let dayFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"

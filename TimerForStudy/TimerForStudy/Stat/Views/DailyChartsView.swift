@@ -33,6 +33,6 @@ private enum NumberConstants {
 
 struct TotalCharts_Previews: PreviewProvider {
     static var previews: some View {
-        DailyChartsView(subjects: StatViewController.createMockObject().monthlyData.dailyData[0].subjects)
+        DailyChartsView(subjects: statRowData.monthlyData[0].dailyData[0].subjects)
     }
 }

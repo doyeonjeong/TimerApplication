@@ -11,7 +11,7 @@ import FSCalendar
 
 final class StatViewController: UIViewController {
 
-    private let stat: Stat = createMockObject()
+    private let stat: Stat = statRowData
     private var dailyStatHostingController: UIHostingController<DailyStatView>!
     private var totalStatHostingController: UIHostingController<PopoverButtonView>!
     
@@ -29,19 +29,6 @@ final class StatViewController: UIViewController {
     
     // SwiftUI View Model에 주입할 통계 데이터 가져오는 함수
     private func fetchStatData() { }
-    
-    // For test
-    // mock object 생성해서 주입
-    static func createMockObject() -> Stat {
-        let programmingData = Subject(name: "프로그래밍", time: 100000)
-        let algorithmData = Subject(name: "알고리즘", time: 55000)
-        let operatingSystemData = Subject(name: "운영체제", time: 45000)
-        let dailyData = Daily(Date(), [programmingData, algorithmData, operatingSystemData])
-        let monthlyData = Monthly(Date(), [dailyData])
-        let model = Stat("yeolmok", monthlyData)
-        
-        return model
-    }
 }
 
 // MARK: - Configure View
@@ -54,8 +41,8 @@ extension StatViewController {
     
     // Embed SwiftUI View
     private func configureAndEmbedView() {
-        let totalStatView = PopoverButtonView()
-        let dailyStatView = DailyStatView(dailyData: stat.monthlyData.dailyData[0])
+        let totalStatView = PopoverButtonView(stat: statRowData)
+        let dailyStatView = DailyStatView(dailyData: stat.monthlyData[0].dailyData[0])
         
         totalStatHostingController = UIHostingController(rootView: totalStatView)
         dailyStatHostingController = UIHostingController(rootView: dailyStatView)

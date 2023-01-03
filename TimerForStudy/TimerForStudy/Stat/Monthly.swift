@@ -8,18 +8,18 @@
 import Foundation
 
 /// 월간 통계 데이터
-struct Monthly {
+struct Monthly: Identifiable {
     let month: Date
-    let total: TimeInterval
+    var total: TimeInterval
     let dailyData: [Daily]
     
+    var id: Date { month }
+    
     init(_ month: Date, _ dailyData: [Daily]) {
-        self.month = month
-
-        var total: TimeInterval = 0
-        for daily in dailyData {
-            total += daily.total
+        let total = dailyData.reduce(into: 0) { total, element in
+            total += element.total
         }
+        self.month = month
         self.total = total
         self.dailyData = dailyData
     }

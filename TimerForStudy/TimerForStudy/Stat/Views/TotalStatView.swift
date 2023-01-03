@@ -10,11 +10,13 @@ import SwiftUI
 
 /// 통계를 문자열 및 다양한 차트로 보여주는 View
 struct TotalStatView: View {
-    
+    let stat: Stat
     var body: some View {
         VStack {
-            TotalChartsView()
+            DescriptionView(total: stat.total)
+            TotalChartsView(monthlyData: stat.monthlyData)
         }
+        .padding(LayoutConstants.offset)
     }
 }
 
@@ -24,6 +26,6 @@ private enum LayoutConstants {
 
 struct TotalStatView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalStatView()
+        TotalStatView(stat: statRowData)
     }
 }
