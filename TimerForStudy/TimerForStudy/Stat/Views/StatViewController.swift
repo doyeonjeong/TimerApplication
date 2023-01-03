@@ -20,12 +20,6 @@ final class StatViewController: UIViewController {
         return calendar
     }()
     
-    private let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-        return dateFormatter
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCalendar()
