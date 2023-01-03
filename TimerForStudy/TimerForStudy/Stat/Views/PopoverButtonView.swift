@@ -9,6 +9,7 @@ import SwiftUI
 
 /// TotalStatView popover View
 struct PopoverButtonView: View {
+    let stat: Stat
     @State private var showingPopover = false
     
     var body: some View {
@@ -17,7 +18,7 @@ struct PopoverButtonView: View {
         }
         .padding(LayoutConstants.offset)
         .popover(isPresented: $showingPopover) {
-            TotalStatView()
+            TotalStatView(stat: stat)
         }
     }
 }
@@ -28,6 +29,6 @@ private enum LayoutConstants {
 
 struct PopoverButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        PopoverButtonView()
+        PopoverButtonView(stat: statRowData)
     }
 }

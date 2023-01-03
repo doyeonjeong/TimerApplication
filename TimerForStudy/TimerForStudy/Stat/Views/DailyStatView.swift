@@ -26,6 +26,6 @@ private enum LayoutConstants {
 
 struct StatView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyStatView(dailyData: StatViewController.createMockObject().monthlyData.dailyData[0])
+        DailyStatView(dailyData: statRowData.monthlyData[0].dailyData[0])
     }
 }
