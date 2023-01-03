@@ -15,8 +15,7 @@ final class TabBarController: UITabBarController {
     }
     
     private func setUpTabBar() {
-        let statisticsViewController = StatisticsViewController()
-        let statisticsNavigationController = UINavigationController(rootViewController: statisticsViewController)
+        let statViewController = StatViewController()
         
         let timerViewController = TimerViewController()
         let timerNavigationController = UINavigationController(rootViewController: timerViewController)
@@ -24,23 +23,23 @@ final class TabBarController: UITabBarController {
         let profileViewController = UserMainViewController()
         let profileNavigationController = UINavigationController(rootViewController: profileViewController)
         
-        statisticsNavigationController.tabBarItem = UITabBarItem(title: TitleConstants.statistics, image: UIImage(systemName: ImageName.statistics), tag: NumberConstants.first)
+        statViewController.tabBarItem = UITabBarItem(title: TitleConstants.stat, image: UIImage(systemName: ImageName.stat), tag: NumberConstants.first)
         timerNavigationController.tabBarItem = UITabBarItem(title: TitleConstants.timer, image: UIImage(systemName: ImageName.timer), tag: NumberConstants.second)
         profileNavigationController.tabBarItem = UITabBarItem(title: TitleConstants.profile, image: UIImage(systemName: ImageName.profile), tag: NumberConstants.third)
         
-        viewControllers = [statisticsNavigationController, timerNavigationController, profileNavigationController]
+        viewControllers = [statViewController, timerNavigationController, profileNavigationController]
         setViewControllers(viewControllers, animated: true)
     }
 }
 
 private enum TitleConstants {
-    static let statistics = "통계"
+    static let stat = "통계"
     static let timer = "타이머"
     static let profile = "프로필"
 }
 
 private enum ImageName {
-    static let statistics = "list.clipboard"
+    static let stat = "list.clipboard"
     static let timer = "clock"
     static let profile = "person.crop.circle"
 }

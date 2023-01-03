@@ -7,15 +7,13 @@
 
 import SwiftUI
 
-/// DescriptionView, ChartsView assembling View
+
+/// 통계를 문자열 및 다양한 차트로 보여주는 View
 struct TotalStatView: View {
-    let stat: Statistics
     
     var body: some View {
         VStack {
-            DescriptionView(total: stat.total)
-                .padding(LayoutConstants.offset)
-            ChartsView(subjects: stat.subjects)
+            TotalChartsView()
         }
     }
 }
@@ -26,6 +24,6 @@ private enum LayoutConstants {
 
 struct TotalStatView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalStatView(stat: StatisticsViewController.createMockObject())
+        TotalStatView()
     }
 }

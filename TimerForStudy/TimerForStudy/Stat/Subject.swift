@@ -7,10 +7,10 @@
 
 import Foundation
 
-/// 과목(카테고리) Entity
+/// 과목(카테고리)
 struct Subject: Identifiable {
     let name: String
-    let total: TimeInterval
+    let time: TimeInterval
     
     var id: String { name }
 }
