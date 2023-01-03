@@ -9,15 +9,20 @@ import Foundation
 
 /// Stat Model
 final class Stat: ObservableObject {
-    @Published var monthlyData: Monthly
+    @Published var monthlyData: [Monthly]
     let total: TimeInterval
     
-    init(_ name: String, _ monthlyData: Monthly) {
-        self.total = monthlyData.total
+    init(_ name: String, _ monthlyData: [Monthly]) {
+        let total = monthlyData.reduce(into: 0) { total, element in
+            total += element.total
+        }
+        
+        self.total = total
         self.monthlyData = monthlyData
     }
     
     func fetchDailyData(_ date: Date) -> Daily? {
-        monthlyData.fetchDailyData(date)
+        guard let month = monthlyData.first(where: { DateConverter.monthFormatter.string(from: date) == DateConverter.monthFormatter.string(from: $0.month) }) else { return nil }
+        return month.fetchDailyData(date)
     }
 }

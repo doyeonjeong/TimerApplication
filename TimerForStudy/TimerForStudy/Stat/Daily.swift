@@ -17,9 +17,8 @@ struct Daily {
         self.day = day
         self.subjects = subjects
         
-        var total: TimeInterval = 0
-        for subject in subjects {
-            total += subject.time
+        let total = subjects.reduce(into: 0) { total, element in
+            total += element.time
         }
         self.total = total
     }
