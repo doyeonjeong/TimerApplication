@@ -67,19 +67,19 @@ extension StatViewController {
         
         NSLayoutConstraint.activate([
             calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.offset),
-            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.offset),
+            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
+            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.spacing),
             calendarView.heightAnchor.constraint(equalToConstant: LayoutConstants.calendarViewHeight),
             
             totalStatHostingController.view.topAnchor.constraint(equalTo: calendarView.bottomAnchor),
-            totalStatHostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.offset),
-            totalStatHostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.offset),
+            totalStatHostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
+            totalStatHostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.spacing),
             totalStatHostingController.view.heightAnchor.constraint(equalToConstant: LayoutConstants.buttonHeight),
             
             dailyStatHostingController.view.topAnchor.constraint(equalTo: totalStatHostingController.view.bottomAnchor),
-            dailyStatHostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.offset),
-            dailyStatHostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.offset),
-            dailyStatHostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -LayoutConstants.bottomOffset)
+            dailyStatHostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
+            dailyStatHostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.spacing),
+            dailyStatHostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -LayoutConstants.bottomSpacing)
         ])
     }
     
@@ -105,16 +105,26 @@ extension StatViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalend
         updateDailyCharts(date)
     }
     
-    // 날짜 선택 해제
-    // 다시 월간 차트 present
-    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        //
+    // 공부한 날은 UIColor 적용
+    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
+        // 공부한 적이 없는 달이라면 systemBackground 적용
+        guard let monthlyData = stat.monthlyData.first(where: { DateConverter.monthFormatter.string(from: $0.month) == DateConverter.monthFormatter.string(from: date) }) else {
+            cell.backgroundColor = .systemBackground
+            return
+        }
+        let days = monthlyData.dailyData.map { DateConverter.dayFormatter.string(from: $0.day) }
+        // 공부한 날이라면 systemOrange 적용
+        if days.contains(DateConverter.dayFormatter.string(from: date)) {
+            cell.backgroundColor = .systemOrange
+        } else {
+            cell.backgroundColor = .systemBackground
+        }
     }
 }
 
 private enum LayoutConstants {
-    static let offset: CGFloat = 8
-    static let bottomOffset: CGFloat = 30
+    static let spacing: CGFloat = 8
+    static let bottomSpacing: CGFloat = 30
     static let buttonHeight: CGFloat = 30
     static let calendarViewHeight: CGFloat = 300
 }

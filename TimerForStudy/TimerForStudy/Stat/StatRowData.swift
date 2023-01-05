@@ -74,7 +74,13 @@ func createMockObject() -> Stat {
     let interviewData_1_2 = Subject(name: "면접", time: 2000)
     let dailyData_1_2 = Daily(DateConverter.dayFormatter.date(from: "2023.01.02")!, [programmingData_1_2, algorithmData_1_2, operatingSystemData_1_2, interviewData_1_2])
     
-    let monthlyData_1 = Monthly(DateConverter.monthFormatter.date(from: "2023.01")!, [dailyData_1_1, dailyData_1_2])
+    let programmingData_1_5 = Subject(name: "프로그래밍", time: 3600)
+    let algorithmData_1_5 = Subject(name: "알고리즘", time: 1800)
+    let operatingSystemData_1_5 = Subject(name: "운영체제", time: 5000)
+    let interviewData_1_5 = Subject(name: "면접", time: 3600)
+    let dailyData_1_5 = Daily(DateConverter.dayFormatter.date(from: "2023.01.05")!, [programmingData_1_5, algorithmData_1_5, operatingSystemData_1_5, interviewData_1_5])
+    
+    let monthlyData_1 = Monthly(DateConverter.monthFormatter.date(from: "2023.01")!, [dailyData_1_1, dailyData_1_2, dailyData_1_5])
     
     let stat = Stat("yeolmok", [monthlyData_9, monthlyData_10, monthlyData_11, monthlyData_12, monthlyData_1])
     return stat
