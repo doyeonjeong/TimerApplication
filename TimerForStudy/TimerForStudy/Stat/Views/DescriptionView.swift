@@ -10,13 +10,12 @@ import SwiftUI
 /// 총 공부 시간을 나타내는 View
 struct DescriptionView: View {
     let total: TimeInterval
-    private let formatter = DateComponentsFormatter()
     
     var body: some View {
         HStack {
             Text(TextConstants.title)
                 .font(.system(.headline, weight: .bold))
-            Text(formatter.string(from: total)!)
+            Text(DateConverter.timeFormatter.string(from: total)!)
                 .font(.system(.subheadline, weight: .semibold))
         }
     }
@@ -24,10 +23,6 @@ struct DescriptionView: View {
 
 private enum TextConstants {
     static let title = "Total"
-}
-
-private enum LayoutConstants {
-    static let offset: CGFloat = 5
 }
 
 struct DescriptionView_Previews: PreviewProvider {
