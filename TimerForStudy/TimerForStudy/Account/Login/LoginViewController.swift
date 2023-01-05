@@ -22,7 +22,7 @@ final class LoginViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .fill
         stackView.alignment = .center
-        stackView.spacing = LayoutConstants.buttonOffset
+        stackView.spacing = LayoutConstants.buttonSpacing
         
         return stackView
     }()
@@ -185,7 +185,7 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
 }
 
 private enum LayoutConstants {
-    static let buttonOffset: CGFloat = 20
+    static let buttonSpacing: CGFloat = 20
     static let buttonWidth: CGFloat = 280
     static let buttonHeight: CGFloat = 45
 }
