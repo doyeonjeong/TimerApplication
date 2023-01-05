@@ -8,6 +8,7 @@
 import SwiftUI
 import Charts
 
+// 비교하는 차트 구성을 위한 struct
 struct Series: Identifiable {
     let name: String
     let monthlyData: [Monthly]
@@ -16,28 +17,11 @@ struct Series: Identifiable {
 }
 
 /// 사용자의 통계를 다양한 차트로 시각화하는 View
+/// 로직은 추후 모델 레이어로 뺄 예정입니다.
 struct TotalChartsView: View {
     let stat: Stat
     @State private var chartStyle = ChartStyles.monthly
     let seriesData: [Series]
-    
-    func data(_ monthlyData: [Monthly]) -> [Monthly] {
-        switch chartStyle {
-        case .monthly:
-            return monthlyData
-        case .cumulative:
-            return accumulate(monthlyData)
-        }
-    }
-    
-    func average(_ monthlyData: [Monthly]) -> TimeInterval {
-        let total = monthlyData.reduce(into: 0) { total, element in
-            total += element.total
-        }
-        return total/Double(monthlyData.count)
-    }
-    
-    
     
     var body: some View {
         VStack {
@@ -74,6 +58,25 @@ struct TotalChartsView: View {
         .padding(LayoutConstants.padding)
     }
     
+    // chartStyle에 따라 다른 데이터 제공
+    func data(_ monthlyData: [Monthly]) -> [Monthly] {
+        switch chartStyle {
+        case .monthly:
+            return monthlyData
+        case .cumulative:
+            return accumulate(monthlyData)
+        }
+    }
+    
+    // 평균값 계산
+    func average(_ monthlyData: [Monthly]) -> TimeInterval {
+        let total = monthlyData.reduce(into: 0) { total, element in
+            total += element.total
+        }
+        return total/Double(monthlyData.count)
+    }
+    
+    // 누적값 계산
     private func accumulate(_ monthlyData: [Monthly]) -> [Monthly] {
         var cumulativeData = monthlyData
         var sum: TimeInterval = 0
