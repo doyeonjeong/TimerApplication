@@ -22,6 +22,13 @@ struct TotalChartsView: View {
         }
     }
     
+    var average: TimeInterval {
+        let total = data.reduce(into: 0) { total, element in
+            total += element.total
+        }
+        return total/Double(data.count)
+    }
+    
     var body: some View {
         VStack {
             Picker(TextConstants.pickerTitle, selection: $chartStyle.animation(.easeInOut)) {
@@ -30,14 +37,31 @@ struct TotalChartsView: View {
             }
             .pickerStyle(.segmented)
             
-            Chart(data) { datum in
-                LineMark(
-                    x: .value(TextConstants.xLabel, DateConverter.monthFormatter.string(from: datum.month)),
-                    y: .value(TextConstants.yLabel, datum.total/NumberConstants.hour)
-                )
-                .symbol(.circle)
+            Chart {
+                ForEach(data) { datum in
+                    LineMark(
+                        x: .value(TextConstants.xLabel, datum.month, unit: .month),
+                        y: .value(TextConstants.yLabel, datum.total/NumberConstants.hour)
+                    )
+                    .symbol(.circle)
+                    .interpolationMethod(.catmullRom)
+                    .foregroundStyle(.red)
+                    if chartStyle == .monthly {
+                        RuleMark(
+                            y: .value(TextConstants.average, average/NumberConstants.hour)
+                        )
+                        .lineStyle(StrokeStyle(lineWidth: 3))
+                        .annotation(position: .top, alignment: .leading) {
+                            Text("Average: \(Int(average/NumberConstants.hour), format: .number) 시간")
+                                .font(.headline)
+                                .foregroundStyle(.black)
+                        }
+                        .foregroundStyle(.black)
+                    }
+                }
             }
         }
+        .padding(LayoutConstants.padding)
     }
     
     private func accumulate(_ monthlyData: [Monthly]) -> [Monthly] {
@@ -62,10 +86,17 @@ private enum TextConstants {
     static let cumulative = "누적"
     static let xLabel = "Name"
     static let yLabel = "Time"
+    static let minLabel = "Min"
+    static let maxLabel = "Max"
+    static let average = "Average"
 }
 
 private enum NumberConstants {
     static let hour: Double = 3600
+}
+
+private enum LayoutConstants {
+    static let padding: CGFloat = 20
 }
 struct TotalChartsView_Previews: PreviewProvider {
     static var previews: some View {

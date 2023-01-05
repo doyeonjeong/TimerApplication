@@ -19,6 +19,8 @@ struct DailyChartsView: View {
                     y: .value(TextConstants.yLabel, subject.time/NumberConstants.hour)
             )
         }
+        .padding(LayoutConstants.padding)
+        .foregroundColor(.red)
     }
 }
 
@@ -29,6 +31,10 @@ private enum TextConstants {
 
 private enum NumberConstants {
     static let hour: Double = 3600
+}
+
+private enum LayoutConstants {
+    static let padding: CGFloat = 20
 }
 
 struct TotalCharts_Previews: PreviewProvider {
