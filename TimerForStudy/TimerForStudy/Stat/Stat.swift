@@ -11,12 +11,13 @@ import Foundation
 final class Stat: ObservableObject {
     @Published var monthlyData: [Monthly]
     let total: TimeInterval
+    let name: String
     
     init(_ name: String, _ monthlyData: [Monthly]) {
         let total = monthlyData.reduce(into: 0) { total, element in
             total += element.total
         }
-        
+        self.name = name
         self.total = total
         self.monthlyData = monthlyData
     }
