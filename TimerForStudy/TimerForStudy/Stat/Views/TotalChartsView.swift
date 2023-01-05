@@ -8,12 +8,20 @@
 import SwiftUI
 import Charts
 
+struct Series: Identifiable {
+    let name: String
+    let monthlyData: [Monthly]
+    
+    var id: String { name }
+}
+
 /// 사용자의 통계를 다양한 차트로 시각화하는 View
 struct TotalChartsView: View {
-    let monthlyData: [Monthly]
+    let stat: Stat
     @State private var chartStyle = ChartStyles.monthly
+    let seriesData: [Series]
     
-    var data: [Monthly] {
+    func data(_ monthlyData: [Monthly]) -> [Monthly] {
         switch chartStyle {
         case .monthly:
             return monthlyData
@@ -22,12 +30,14 @@ struct TotalChartsView: View {
         }
     }
     
-    var average: TimeInterval {
-        let total = data.reduce(into: 0) { total, element in
+    func average(_ monthlyData: [Monthly]) -> TimeInterval {
+        let total = monthlyData.reduce(into: 0) { total, element in
             total += element.total
         }
-        return total/Double(data.count)
+        return total/Double(monthlyData.count)
     }
+    
+    
     
     var body: some View {
         VStack {
@@ -37,26 +47,26 @@ struct TotalChartsView: View {
             }
             .pickerStyle(.segmented)
             
-            Chart {
-                ForEach(data) { datum in
+            Chart(seriesData) { series in
+                ForEach(data(series.monthlyData)) { datum in
                     LineMark(
                         x: .value(TextConstants.xLabel, datum.month, unit: .month),
                         y: .value(TextConstants.yLabel, datum.total/NumberConstants.hour)
                     )
-                    .symbol(.circle)
+                    .symbol(by: .value("Name", series.name))
+                    .foregroundStyle(by: .value("Name", series.name))
                     .interpolationMethod(.catmullRom)
-                    .foregroundStyle(.red)
+                    
                     if chartStyle == .monthly {
                         RuleMark(
-                            y: .value(TextConstants.average, average/NumberConstants.hour)
+                            y: .value(TextConstants.average, average(series.monthlyData)/NumberConstants.hour)
                         )
-                        .lineStyle(StrokeStyle(lineWidth: 3))
+                        .foregroundStyle(by: .value("Name", series.name))
+                        .lineStyle(StrokeStyle(lineWidth: 2))
                         .annotation(position: .top, alignment: .leading) {
-                            Text("Average: \(Int(average/NumberConstants.hour), format: .number) 시간")
-                                .font(.headline)
-                                .foregroundStyle(.black)
+                            Text("\(DateConverter.timeFormatter.string(from: average(series.monthlyData))!)")
+                                .font(.subheadline)
                         }
-                        .foregroundStyle(.black)
                     }
                 }
             }
@@ -100,6 +110,6 @@ private enum LayoutConstants {
 }
 struct TotalChartsView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalChartsView(monthlyData: statRowData.monthlyData)
+        TotalChartsView(stat: statRowData, seriesData: seriesData)
     }
 }

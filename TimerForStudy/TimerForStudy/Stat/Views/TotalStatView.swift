@@ -14,14 +14,15 @@ struct TotalStatView: View {
     var body: some View {
         VStack {
             DescriptionView(total: stat.total)
-            TotalChartsView(monthlyData: stat.monthlyData)
+            TotalChartsView(stat: stat,
+                            seriesData: seriesData)
         }
-        .padding(LayoutConstants.offset)
+        .padding(LayoutConstants.padding)
     }
 }
 
 private enum LayoutConstants {
-    static let offset: CGFloat = 20
+    static let padding: CGFloat = 20
 }
 
 struct TotalStatView_Previews: PreviewProvider {

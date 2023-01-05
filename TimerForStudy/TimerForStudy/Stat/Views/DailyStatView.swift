@@ -16,12 +16,12 @@ struct DailyStatView: View {
             DescriptionView(total: dailyData.total)
             DailyChartsView(subjects: dailyData.subjects)
         }
-        .padding(LayoutConstants.offset)
+        .padding(LayoutConstants.padding)
     }
 }
 
 private enum LayoutConstants {
-    static let offset: CGFloat = 8
+    static let padding: CGFloat = 8
 }
 
 struct StatView_Previews: PreviewProvider {

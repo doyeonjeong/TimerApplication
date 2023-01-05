@@ -16,7 +16,7 @@ struct PopoverButtonView: View {
         Button("Total") {
             showingPopover.toggle()
         }
-        .padding(LayoutConstants.offset)
+        .padding(LayoutConstants.padding)
         .popover(isPresented: $showingPopover) {
             TotalStatView(stat: stat)
         }
@@ -24,7 +24,7 @@ struct PopoverButtonView: View {
 }
 
 private enum LayoutConstants {
-    static let offset: CGFloat = 8
+    static let padding: CGFloat = 8
 }
 
 struct PopoverButtonView_Previews: PreviewProvider {
