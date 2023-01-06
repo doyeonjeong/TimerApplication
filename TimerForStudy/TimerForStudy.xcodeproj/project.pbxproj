@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B17983F29649A170032FD1C /* StatRowData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17983E29649A170032FD1C /* StatRowData.swift */; };
+		6B17983F29649A170032FD1C /* StatRawData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17983E29649A170032FD1C /* StatRawData.swift */; };
 		6B1B123D2945AA3600140F05 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B123C2945AA3600140F05 /* TabBarController.swift */; };
 		6B1B12422945AAFA00140F05 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12412945AAFA00140F05 /* TimerViewController.swift */; };
 		6B1B12442945AB2F00140F05 /* StatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12432945AB2F00140F05 /* StatViewController.swift */; };
@@ -69,7 +69,7 @@
 /* Begin PBXFileReference section */
 		6B013BBB293848AB0071D525 /* KakaoLoginConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = KakaoLoginConfig.xcconfig; sourceTree = "<group>"; };
 		6B013BBC293849700071D525 /* TimerForStudy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimerForStudy.entitlements; sourceTree = "<group>"; };
-		6B17983E29649A170032FD1C /* StatRowData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRowData.swift; sourceTree = "<group>"; };
+		6B17983E29649A170032FD1C /* StatRawData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatRawData.swift; sourceTree = "<group>"; };
 		6B1B123C2945AA3600140F05 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6B1B12412945AAFA00140F05 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		6B1B12432945AB2F00140F05 /* StatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewController.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 				6B4A0C9929637E4D00C6B92D /* Monthly.swift */,
 				6B4A0C9B29637E7C00C6B92D /* Daily.swift */,
 				6B2D64CE29622EBF0009731C /* Subject.swift */,
-				6B17983E29649A170032FD1C /* StatRowData.swift */,
+				6B17983E29649A170032FD1C /* StatRawData.swift */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -480,7 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B17983F29649A170032FD1C /* StatRowData.swift in Sources */,
+				6B17983F29649A170032FD1C /* StatRawData.swift in Sources */,
 				E137308C2948338A00EE804A /* UIView.swift in Sources */,
 				E137308A294831F100EE804A /* TimeManager.swift in Sources */,
 				E13730B429485C4500EE804A /* ShareConstant.swift in Sources */,
