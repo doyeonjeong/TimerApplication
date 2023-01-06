@@ -14,7 +14,10 @@ struct DailyStatView: View {
     var body: some View {
         VStack {
             DescriptionView(total: dailyData.total)
-            DailyChartsView(dailyData: dailyData)
+            // Time Charts
+            TimeChartsView(subjects: dailyData.subjects)
+            // Percentage Charts
+            PercentageChartsView(dailyData: dailyData)
         }
         .padding(LayoutConstants.padding)
     }
