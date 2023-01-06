@@ -11,22 +11,42 @@ import Charts
 /// 일간 Charts View
 /// CalendarView에서 날짜 탭시 그날의 통계를 보여줌.
 struct DailyChartsView: View {
-    let subjects: [Subject]
+    let dailyData: Daily
     
     var body: some View {
-        Chart(subjects) { subject in
-            BarMark(x: .value(TextConstants.xLabel, subject.name),
-                    y: .value(TextConstants.yLabel, subject.time/NumberConstants.hour)
-            )
+        VStack {
+            // Time Charts
+            Chart(dailyData.subjects) { subject in
+                BarMark(x: .value(TextConstants.nameLabel, subject.name),
+                        y: .value(TextConstants.timeLabel, subject.time/NumberConstants.hour)
+                )
+                .foregroundStyle(by: .value(TextConstants.nameLabel, subject.name))
+            }
+            
+            // Percentage Charts
+            Chart(dailyData.subjects) { subject in
+                BarMark(
+                    x: .value(TextConstants.percentageLabel, subject.time/dailyData.total * 100),
+                    y: .value(TextConstants.singleLabel, TextConstants.singleLabelText),
+                    width: .fixed(50),
+                    stacking: .standard
+                )
+                .foregroundStyle(by: .value(TextConstants.nameLabel, subject.name))
+                .annotation(position: .overlay, alignment: .center) {
+                    Text("\(Int(subject.time/dailyData.total * 100))%")
+                }
+            }
         }
         .padding(LayoutConstants.padding)
-        .foregroundColor(.red)
     }
 }
 
 private enum TextConstants {
-    static let xLabel = "Name"
-    static let yLabel = "Time"
+    static let nameLabel = "Name"
+    static let timeLabel = "Time"
+    static let percentageLabel = "Percentage"
+    static let singleLabel = "Single"
+    static let singleLabelText = "카테고리별 비율, 소수점 이하는 버림"
 }
 
 private enum NumberConstants {
@@ -39,6 +59,6 @@ private enum LayoutConstants {
 
 struct TotalCharts_Previews: PreviewProvider {
     static var previews: some View {
-        DailyChartsView(subjects: statRowData.monthlyData[0].dailyData[0].subjects)
+        DailyChartsView(dailyData: statRowData.monthlyData[0].dailyData[0])
     }
 }
