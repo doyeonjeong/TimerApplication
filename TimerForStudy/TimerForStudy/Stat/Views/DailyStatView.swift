@@ -14,7 +14,10 @@ struct DailyStatView: View {
     var body: some View {
         VStack {
             DescriptionView(total: dailyData.total)
-            DailyChartsView(subjects: dailyData.subjects)
+            // Time Charts
+            TimeChartsView(subjects: dailyData.subjects)
+            // Percentage Charts
+            PercentageChartsView(dailyData: dailyData)
         }
         .padding(LayoutConstants.padding)
     }
@@ -26,6 +29,6 @@ private enum LayoutConstants {
 
 struct StatView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyStatView(dailyData: statRowData.monthlyData[0].dailyData[0])
+        DailyStatView(dailyData: statRawData.monthlyData[0].dailyData[0])
     }
 }

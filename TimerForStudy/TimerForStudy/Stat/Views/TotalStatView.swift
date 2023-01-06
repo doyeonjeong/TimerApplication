@@ -27,6 +27,6 @@ private enum LayoutConstants {
 
 struct TotalStatView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalStatView(stat: statRowData)
+        TotalStatView(stat: statRawData)
     }
 }

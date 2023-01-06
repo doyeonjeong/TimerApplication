@@ -29,6 +29,6 @@ private enum LayoutConstants {
 
 struct PopoverButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        PopoverButtonView(stat: statRowData)
+        PopoverButtonView(stat: statRawData)
     }
 }

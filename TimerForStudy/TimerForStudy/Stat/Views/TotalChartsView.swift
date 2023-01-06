@@ -113,6 +113,6 @@ private enum LayoutConstants {
 }
 struct TotalChartsView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalChartsView(stat: statRowData, seriesData: seriesData)
+        TotalChartsView(stat: statRawData, seriesData: seriesData)
     }
 }
