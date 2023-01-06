@@ -29,6 +29,6 @@ private enum LayoutConstants {
 
 struct StatView_Previews: PreviewProvider {
     static var previews: some View {
-        DailyStatView(dailyData: statRowData.monthlyData[0].dailyData[0])
+        DailyStatView(dailyData: statRawData.monthlyData[0].dailyData[0])
     }
 }

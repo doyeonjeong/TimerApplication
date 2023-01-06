@@ -37,6 +37,6 @@ private enum LayoutConstants {
 
 struct TimeChartsView_Previews: PreviewProvider {
     static var previews: some View {
-        TimeChartsView(subjects: statRowData.monthlyData[0].dailyData[0].subjects)
+        TimeChartsView(subjects: statRawData.monthlyData[0].dailyData[0].subjects)
     }
 }

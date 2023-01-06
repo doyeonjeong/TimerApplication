@@ -11,7 +11,7 @@ import FSCalendar
 
 final class StatViewController: UIViewController {
 
-    private let stat: Stat = statRowData
+    private let stat: Stat = statRawData
     private var dailyStatHostingController: UIHostingController<DailyStatView>!
     private var totalStatHostingController: UIHostingController<PopoverButtonView>!
     
@@ -41,7 +41,7 @@ extension StatViewController {
     
     // Embed SwiftUI View
     private func configureAndEmbedView() {
-        let totalStatView = PopoverButtonView(stat: statRowData)
+        let totalStatView = PopoverButtonView(stat: statRawData)
         let dailyStatView = DailyStatView(dailyData: stat.monthlyData[0].dailyData[0])
         
         totalStatHostingController = UIHostingController(rootView: totalStatView)

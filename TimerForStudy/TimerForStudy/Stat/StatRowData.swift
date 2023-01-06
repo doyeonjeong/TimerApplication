@@ -1,5 +1,5 @@
 //
-//  StatRowData.swift
+//  StatRawData.swift
 //  TimerForStudy
 //
 //  Created by 김동욱 on 2023/01/04.
@@ -163,11 +163,11 @@ private func createMockObject_friend() -> Stat {
     return stat
 }
 
-let statRowData = createMockObject()
-let statRowDate_friend = createMockObject_friend()
+let statRawData = createMockObject()
+let statRawDate_friend = createMockObject_friend()
 let seriesData: [Series] = [
-    .init(name: statRowData.name,
-          monthlyData: statRowData.monthlyData),
-    .init(name: statRowDate_friend.name,
-          monthlyData: statRowDate_friend.monthlyData)
+    .init(name: statRawData.name,
+          monthlyData: statRawData.monthlyData),
+    .init(name: statRawDate_friend.name,
+          monthlyData: statRawDate_friend.monthlyData)
 ]

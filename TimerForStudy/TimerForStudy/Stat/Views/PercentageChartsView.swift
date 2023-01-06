@@ -40,6 +40,6 @@ private enum LayoutConstants {
 
 struct PercentageChartsView_Previews: PreviewProvider {
     static var previews: some View {
-        PercentageChartsView(dailyData: statRowData.monthlyData[0].dailyData[0])
+        PercentageChartsView(dailyData: statRawData.monthlyData[0].dailyData[0])
     }
 }

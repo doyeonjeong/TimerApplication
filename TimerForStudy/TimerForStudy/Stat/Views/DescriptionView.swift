@@ -27,6 +27,6 @@ private enum TextConstants {
 
 struct DescriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        DescriptionView(total: statRowData.total)
+        DescriptionView(total: statRawData.total)
     }
 }
