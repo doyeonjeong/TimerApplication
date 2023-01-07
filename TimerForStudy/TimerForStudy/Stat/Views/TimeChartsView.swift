@@ -8,22 +8,30 @@
 import SwiftUI
 import Charts
 
+/// 카테고리(과목)별 공부 시간을 시각화하는 차트 뷰
 struct TimeChartsView: View {
     let subjects: [Subject]
     
     var body: some View {
         Chart(subjects) { subject in
-            BarMark(x: .value(TextConstants.nameLabel, subject.name),
-                    y: .value(TextConstants.timeLabel, subject.time/NumberConstants.hour)
+            BarMark(
+                x: .value(
+                    TextConstants.categoryLabel,
+                    subject.name
+                ),
+                y: .value(
+                    TextConstants.timeLabel,
+                    subject.time/NumberConstants.hour
+                )
             )
-            .foregroundStyle(by: .value(TextConstants.nameLabel, subject.name))
+            .foregroundStyle(by: .value(TextConstants.categoryLabel, subject.name))
         }
         .padding(LayoutConstants.padding)
     }
 }
 
 private enum TextConstants {
-    static let nameLabel = "Name"
+    static let categoryLabel = "Subject Category"
     static let timeLabel = "Time"
 }
 
