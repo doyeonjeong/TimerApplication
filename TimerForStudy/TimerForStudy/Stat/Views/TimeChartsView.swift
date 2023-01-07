@@ -16,7 +16,7 @@ struct TimeChartsView: View {
         Chart(subjects) { subject in
             BarMark(
                 x: .value(
-                    TextConstants.nameLabel,
+                    TextConstants.categoryLabel,
                     subject.name
                 ),
                 y: .value(
@@ -24,14 +24,14 @@ struct TimeChartsView: View {
                     subject.time/NumberConstants.hour
                 )
             )
-            .foregroundStyle(by: .value(TextConstants.nameLabel, subject.name))
+            .foregroundStyle(by: .value(TextConstants.categoryLabel, subject.name))
         }
         .padding(LayoutConstants.padding)
     }
 }
 
 private enum TextConstants {
-    static let nameLabel = "Name"
+    static let categoryLabel = "Subject Category"
     static let timeLabel = "Time"
 }
 
