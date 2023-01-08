@@ -1,5 +1,5 @@
 //
-//  Subject.swift
+//  Category.swift
 //  TimerForStudy
 //
 //  Created by 김동욱 on 2023/01/02.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-/// 과목(카테고리)
-struct Subject: Identifiable {
+/// 카테고리
+struct Category: Identifiable {
     let name: String
-    let time: TimeInterval
+    var time: TimeInterval
     
     var id: String { name }
 }

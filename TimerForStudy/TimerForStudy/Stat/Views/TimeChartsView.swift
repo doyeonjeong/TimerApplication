@@ -10,28 +10,28 @@ import Charts
 
 /// 카테고리(과목)별 공부 시간을 시각화하는 차트 뷰
 struct TimeChartsView: View {
-    let subjects: [Subject]
+    let categories: [Category]
     
     var body: some View {
-        Chart(subjects) { subject in
+        Chart(categories) { category in
             BarMark(
                 x: .value(
                     TextConstants.categoryLabel,
-                    subject.name
+                    category.name
                 ),
                 y: .value(
                     TextConstants.timeLabel,
-                    subject.time/NumberConstants.hour
+                    category.time/NumberConstants.hour
                 )
             )
-            .foregroundStyle(by: .value(TextConstants.categoryLabel, subject.name))
+            .foregroundStyle(by: .value(TextConstants.categoryLabel, category.name))
         }
         .padding(LayoutConstants.padding)
     }
 }
 
 private enum TextConstants {
-    static let categoryLabel = "Subject Category"
+    static let categoryLabel = "Category"
     static let timeLabel = "Time"
 }
 
@@ -45,6 +45,6 @@ private enum LayoutConstants {
 
 struct TimeChartsView_Previews: PreviewProvider {
     static var previews: some View {
-        TimeChartsView(subjects: statRawData.monthlyData[0].dailyData[0].subjects)
+        TimeChartsView(categories: statRawData.monthlyData[0].dailyData[0].categories)
     }
 }

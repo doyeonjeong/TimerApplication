@@ -16,8 +16,18 @@ struct Series: Identifiable {
     var id: String { name }
 }
 
+/// Picker로 값을 변경하는데 사용할 차트 스타일
+///  cumulative: 누적
+///  monthly: 월간
+///  category: 카테고리별 누적 시간
+private enum ChartStyles {
+    case cumulative
+    case monthly
+    case category
+}
+
 /// 사용자의 통계를 다양한 차트로 시각화하는 View
-/// 로직은 추후 모델 레이어로 뺄 예정입니다.
+/// 데이터 처리 로직은 추후 모델 레이어로 뺄 예정입니다.
 struct TotalChartsView: View {
     let stat: Stat
     @State private var chartStyle = ChartStyles.monthly
@@ -28,28 +38,39 @@ struct TotalChartsView: View {
             Picker(TextConstants.pickerTitle, selection: $chartStyle.animation(.easeInOut)) {
                 Text(TextConstants.monthly).tag(ChartStyles.monthly)
                 Text(TextConstants.cumulative).tag(ChartStyles.cumulative)
+                Text(TextConstants.category).tag(ChartStyles.category)
             }
             .pickerStyle(.segmented)
             
-            Chart(seriesData) { series in
-                ForEach(data(series.monthlyData)) { datum in
-                    LineMark(
-                        x: .value(TextConstants.xLabel, datum.month, unit: .month),
-                        y: .value(TextConstants.yLabel, datum.total/NumberConstants.hour)
+            if chartStyle == .category {
+                Chart(accumulatedCategories(stat.monthlyData)) { category in
+                    BarMark(
+                        x: .value("Time", category.time/NumberConstants.hour),
+                        y: .value("Category", category.name)
                     )
-                    .symbol(by: .value("Name", series.name))
-                    .foregroundStyle(by: .value("Name", series.name))
-                    .interpolationMethod(.catmullRom)
-                    
-                    if chartStyle == .monthly {
-                        RuleMark(
-                            y: .value(TextConstants.average, average(series.monthlyData)/NumberConstants.hour)
+                    .foregroundStyle(by: .value("Category", category.name))
+                }
+            } else {
+                Chart(seriesData) { series in
+                    ForEach(data(series.monthlyData)!) { datum in
+                        LineMark(
+                            x: .value(TextConstants.xLabel, datum.month, unit: .month),
+                            y: .value(TextConstants.yLabel, datum.total/NumberConstants.hour)
                         )
+                        .symbol(by: .value("Name", series.name))
                         .foregroundStyle(by: .value("Name", series.name))
-                        .lineStyle(StrokeStyle(lineWidth: 2))
-                        .annotation(position: .top, alignment: .leading) {
-                            Text("\(DateConverter.timeFormatter.string(from: average(series.monthlyData))!)")
-                                .font(.subheadline)
+                        .interpolationMethod(.catmullRom)
+                        
+                        if chartStyle == .monthly {
+                            RuleMark(
+                                y: .value(TextConstants.average, average(series.monthlyData)/NumberConstants.hour)
+                            )
+                            .foregroundStyle(by: .value("Name", series.name))
+                            .lineStyle(StrokeStyle(lineWidth: 2))
+                            .annotation(position: .top, alignment: .leading) {
+                                Text("\(DateConverter.timeFormatter.string(from: average(series.monthlyData))!)")
+                                    .font(.subheadline)
+                            }
                         }
                     }
                 }
@@ -59,17 +80,19 @@ struct TotalChartsView: View {
     }
     
     // chartStyle에 따라 다른 데이터 제공
-    func data(_ monthlyData: [Monthly]) -> [Monthly] {
+    func data(_ monthlyData: [Monthly]) -> [Monthly]? {
         switch chartStyle {
         case .monthly:
             return monthlyData
         case .cumulative:
             return accumulate(monthlyData)
+        default:
+            return nil
         }
     }
     
     // 평균값 계산
-    func average(_ monthlyData: [Monthly]) -> TimeInterval {
+    private func average(_ monthlyData: [Monthly]) -> TimeInterval {
         let total = monthlyData.reduce(into: 0) { total, element in
             total += element.total
         }
@@ -86,17 +109,32 @@ struct TotalChartsView: View {
         }
         return cumulativeData
     }
-}
-
-private enum ChartStyles {
-    case cumulative
-    case monthly
+    
+    // 카테고리별 누적값 계산
+    // stored property 생성해서 사용 가능, 모델 레이어에서 초기화
+    private func accumulatedCategories(_ monthlyData: [Monthly]) -> [Category] {
+        var accumulatedCategories = [Category]()
+        
+        for monthly in monthlyData {
+            for daily in monthly.dailyData {
+                for category in daily.categories {
+                    if let indexThatAlreadyExists = accumulatedCategories.firstIndex { $0.name == category.name } {
+                        accumulatedCategories[indexThatAlreadyExists].time += category.time
+                    } else {
+                        accumulatedCategories.append(category)
+                    }
+                }
+            }
+        }
+        return accumulatedCategories
+    }
 }
 
 private enum TextConstants {
     static let pickerTitle = "Total"
     static let monthly = "월간"
     static let cumulative = "누적"
+    static let category = "카테고리"
     static let xLabel = "Name"
     static let yLabel = "Time"
     static let minLabel = "Min"

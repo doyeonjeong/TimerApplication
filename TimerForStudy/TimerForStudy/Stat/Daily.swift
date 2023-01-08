@@ -11,13 +11,13 @@ import Foundation
 struct Daily {
     let day: Date
     let total: TimeInterval
-    let subjects: [Subject]
+    let categories: [Category]
     
-    init(_ day: Date, _ subjects: [Subject]) {
+    init(_ day: Date, _ categories: [Category]) {
         self.day = day
-        self.subjects = subjects
+        self.categories = categories
         
-        let total = subjects.reduce(into: 0) { total, element in
+        let total = categories.reduce(into: 0) { total, element in
             total += element.time
         }
         self.total = total

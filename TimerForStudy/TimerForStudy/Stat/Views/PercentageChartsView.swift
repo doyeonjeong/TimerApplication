@@ -14,19 +14,19 @@ struct PercentageChartsView: View {
     
     var body: some View {
         GeometryReader { proxy in
-            Chart(dailyData.subjects) { subject in
+            Chart(dailyData.categories) { categories in
                 BarMark(
                     x: .value(
                         TextConstants.percentageLabel,
-                        subject.time/dailyData.total * NumberConstants.hundred
+                        categories.time/dailyData.total * NumberConstants.hundred
                     ),
                     yStart: proxy.size.height * LayoutConstants.half - LayoutConstants.barWidth,
                     yEnd: proxy.size.height * LayoutConstants.half,
                     stacking: .normalized // For full height
                 )
-                .foregroundStyle(by: .value(TextConstants.categoryLabel, subject.name))
+                .foregroundStyle(by: .value(TextConstants.categoryLabel, categories.name))
                 .annotation(position: .overlay, alignment: .center) {
-                    Text("\(Int(subject.time/dailyData.total * NumberConstants.hundred))" + TextConstants.percentageString)
+                    Text("\(Int(categories.time/dailyData.total * NumberConstants.hundred))" + TextConstants.percentageString)
                         .font(.system(.caption, weight: .semibold))
                 }
             }
@@ -37,7 +37,7 @@ struct PercentageChartsView: View {
 
 private enum TextConstants {
     static let percentageLabel = "Percentage"
-    static let categoryLabel = "Subject Category"
+    static let categoryLabel = "Category"
     static let percentageString = "\u{0025}"
 }
 
