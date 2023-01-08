@@ -45,28 +45,28 @@ struct TotalChartsView: View {
             if chartStyle == .category {
                 Chart(accumulatedCategories(stat.monthlyData)) { category in
                     BarMark(
-                        x: .value("Time", category.time/NumberConstants.hour),
-                        y: .value("Category", category.name)
+                        x: .value(TextConstants.timeLabel, category.time/NumberConstants.hour),
+                        y: .value(TextConstants.categoryLabel, category.name)
                     )
-                    .foregroundStyle(by: .value("Category", category.name))
+                    .foregroundStyle(by: .value(TextConstants.categoryLabel, category.name))
                 }
             } else {
                 Chart(seriesData) { series in
                     ForEach(data(series.monthlyData)!) { datum in
                         LineMark(
-                            x: .value(TextConstants.xLabel, datum.month, unit: .month),
-                            y: .value(TextConstants.yLabel, datum.total/NumberConstants.hour)
+                            x: .value(TextConstants.nameLabel, datum.month, unit: .month),
+                            y: .value(TextConstants.timeLabel, datum.total/NumberConstants.hour)
                         )
-                        .symbol(by: .value("Name", series.name))
-                        .foregroundStyle(by: .value("Name", series.name))
+                        .symbol(by: .value(TextConstants.nameLabel, series.name))
+                        .foregroundStyle(by: .value(TextConstants.nameLabel, series.name))
                         .interpolationMethod(.catmullRom)
                         
                         if chartStyle == .monthly {
                             RuleMark(
                                 y: .value(TextConstants.average, average(series.monthlyData)/NumberConstants.hour)
                             )
-                            .foregroundStyle(by: .value("Name", series.name))
-                            .lineStyle(StrokeStyle(lineWidth: 2))
+                            .foregroundStyle(by: .value(TextConstants.nameLabel, series.name))
+                            .lineStyle(StrokeStyle(lineWidth: LayoutConstants.ruleMarkWidth))
                             .annotation(position: .top, alignment: .leading) {
                                 Text("\(DateConverter.timeFormatter.string(from: average(series.monthlyData))!)")
                                     .font(.subheadline)
@@ -93,7 +93,7 @@ struct TotalChartsView: View {
     
     // 평균값 계산
     private func average(_ monthlyData: [Monthly]) -> TimeInterval {
-        let total = monthlyData.reduce(into: 0) { total, element in
+        let total = monthlyData.reduce(into: NumberConstants.zero) { total, element in
             total += element.total
         }
         return total/Double(monthlyData.count)
@@ -101,16 +101,17 @@ struct TotalChartsView: View {
     
     // 누적값 계산
     private func accumulate(_ monthlyData: [Monthly]) -> [Monthly] {
-        var cumulativeData = monthlyData
-        var sum: TimeInterval = 0
-        for index in cumulativeData.indices {
-            sum += cumulativeData[index].total
-            cumulativeData[index].total = sum
+        var accumulatedMonthlyData = monthlyData
+        var sum: TimeInterval = NumberConstants.zero
+        
+        for index in accumulatedMonthlyData.indices {
+            sum += accumulatedMonthlyData[index].total
+            accumulatedMonthlyData[index].total = sum
         }
-        return cumulativeData
+        return accumulatedMonthlyData
     }
     
-    // 카테고리별 누적값 계산
+    // 카테고리별 누적 공부 시간 계산
     // stored property 생성해서 사용 가능, 모델 레이어에서 초기화
     private func accumulatedCategories(_ monthlyData: [Monthly]) -> [Category] {
         var accumulatedCategories = [Category]()
@@ -126,7 +127,7 @@ struct TotalChartsView: View {
                 }
             }
         }
-        return accumulatedCategories
+        return accumulatedCategories.sorted { $0.time > $1.time }
     }
 }
 
@@ -135,8 +136,9 @@ private enum TextConstants {
     static let monthly = "월간"
     static let cumulative = "누적"
     static let category = "카테고리"
-    static let xLabel = "Name"
-    static let yLabel = "Time"
+    static let nameLabel = "Name"
+    static let timeLabel = "Time"
+    static let categoryLabel = "Category"
     static let minLabel = "Min"
     static let maxLabel = "Max"
     static let average = "Average"
@@ -144,10 +146,12 @@ private enum TextConstants {
 
 private enum NumberConstants {
     static let hour: Double = 3600
+    static let zero: Double = 0
 }
 
 private enum LayoutConstants {
     static let padding: CGFloat = 20
+    static let ruleMarkWidth: CGFloat = 2
 }
 struct TotalChartsView_Previews: PreviewProvider {
     static var previews: some View {
