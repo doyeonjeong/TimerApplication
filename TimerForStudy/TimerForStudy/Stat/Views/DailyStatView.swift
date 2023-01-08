@@ -15,7 +15,7 @@ struct DailyStatView: View {
         VStack {
             DescriptionView(total: dailyData.total)
             // Time Charts
-            TimeChartsView(subjects: dailyData.subjects)
+            TimeChartsView(categories: dailyData.categories)
             // Percentage Charts
             PercentageChartsView(dailyData: dailyData)
         }

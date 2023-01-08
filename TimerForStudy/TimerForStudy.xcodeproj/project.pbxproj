@@ -18,7 +18,7 @@
 		6B2D64C829620EF10009731C /* DailyStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64C729620EF10009731C /* DailyStatView.swift */; };
 		6B2D64CA29622C170009731C /* TotalStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64C929622C170009731C /* TotalStatView.swift */; };
 		6B2D64CD29622E0D0009731C /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64CC29622E0D0009731C /* Stat.swift */; };
-		6B2D64CF29622EBF0009731C /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64CE29622EBF0009731C /* Subject.swift */; };
+		6B2D64CF29622EBF0009731C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64CE29622EBF0009731C /* Category.swift */; };
 		6B2D64D8296241C70009731C /* DescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64D7296241C70009731C /* DescriptionView.swift */; };
 		6B44846D29348CF50025260C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44846C29348CF50025260C /* LoginViewController.swift */; };
 		6B4A0C9A29637E4D00C6B92D /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A0C9929637E4D00C6B92D /* Monthly.swift */; };
@@ -78,7 +78,7 @@
 		6B2D64C729620EF10009731C /* DailyStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStatView.swift; sourceTree = "<group>"; };
 		6B2D64C929622C170009731C /* TotalStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalStatView.swift; sourceTree = "<group>"; };
 		6B2D64CC29622E0D0009731C /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
-		6B2D64CE29622EBF0009731C /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
+		6B2D64CE29622EBF0009731C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		6B2D64D7296241C70009731C /* DescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionView.swift; sourceTree = "<group>"; };
 		6B44846C29348CF50025260C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6B4A0C9929637E4D00C6B92D /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 				6B2D64CC29622E0D0009731C /* Stat.swift */,
 				6B4A0C9929637E4D00C6B92D /* Monthly.swift */,
 				6B4A0C9B29637E7C00C6B92D /* Daily.swift */,
-				6B2D64CE29622EBF0009731C /* Subject.swift */,
+				6B2D64CE29622EBF0009731C /* Category.swift */,
 				6B17983E29649A170032FD1C /* StatRawData.swift */,
 			);
 			path = Stat;
@@ -503,7 +503,7 @@
 				6B2D64C829620EF10009731C /* DailyStatView.swift in Sources */,
 				6B1ECC4529349080007318DB /* KakaoLoginManager.swift in Sources */,
 				6B2D64CA29622C170009731C /* TotalStatView.swift in Sources */,
-				6B2D64CF29622EBF0009731C /* Subject.swift in Sources */,
+				6B2D64CF29622EBF0009731C /* Category.swift in Sources */,
 				E13730B029485BE600EE804A /* NetworkManager.swift in Sources */,
 				E11BFEB329345A700017FBB0 /* TimerForStudy.xcdatamodeld in Sources */,
 				6B74428D2963B93000F9FF30 /* PopoverButtonView.swift in Sources */,

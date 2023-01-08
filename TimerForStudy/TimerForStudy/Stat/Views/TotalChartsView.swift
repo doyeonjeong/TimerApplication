@@ -43,7 +43,7 @@ struct TotalChartsView: View {
             .pickerStyle(.segmented)
             
             if chartStyle == .category {
-                Chart(accumulateOfCategories(stat.monthlyData)) { category in
+                Chart(accumulatedCategories(stat.monthlyData)) { category in
                     BarMark(
                         x: .value("Time", category.time/NumberConstants.hour),
                         y: .value("Category", category.name)
@@ -112,21 +112,21 @@ struct TotalChartsView: View {
     
     // 카테고리별 누적값 계산
     // stored property 생성해서 사용 가능, 모델 레이어에서 초기화
-    private func accumulateOfCategories(_ monthlyData: [Monthly]) -> [Subject] {
-        var subjects = [Subject]()
+    private func accumulatedCategories(_ monthlyData: [Monthly]) -> [Category] {
+        var accumulatedCategories = [Category]()
         
         for monthly in monthlyData {
             for daily in monthly.dailyData {
-                for subject in daily.subjects {
-                    if let indexThatAlreadyExists = subjects.firstIndex { $0.name == subject.name } {
-                        subjects[indexThatAlreadyExists].time += subject.time
+                for category in daily.categories {
+                    if let indexThatAlreadyExists = accumulatedCategories.firstIndex { $0.name == category.name } {
+                        accumulatedCategories[indexThatAlreadyExists].time += category.time
                     } else {
-                        subjects.append(subject)
+                        accumulatedCategories.append(category)
                     }
                 }
             }
         }
-        return subjects
+        return accumulatedCategories
     }
 }
 
