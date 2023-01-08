@@ -42,15 +42,22 @@ struct TotalChartsView: View {
             }
             .pickerStyle(.segmented)
             
-            if chartStyle == .category {
+            switch chartStyle {
+            case .category:
                 Chart(accumulatedCategories(stat.monthlyData)) { category in
                     BarMark(
                         x: .value(TextConstants.timeLabel, category.time/NumberConstants.hour),
                         y: .value(TextConstants.categoryLabel, category.name)
                     )
                     .foregroundStyle(by: .value(TextConstants.categoryLabel, category.name))
+                    .annotation(
+                        position: .trailing,
+                        alignment: .leading,
+                        spacing: LayoutConstants.spacing) {
+                            Text(DateConverter.timeFormatter.string(from: category.time)!)
+                        }
                 }
-            } else {
+            default:
                 Chart(seriesData) { series in
                     ForEach(data(series.monthlyData)!) { datum in
                         LineMark(
@@ -151,6 +158,7 @@ private enum NumberConstants {
 
 private enum LayoutConstants {
     static let padding: CGFloat = 20
+    static let spacing: CGFloat = 8
     static let ruleMarkWidth: CGFloat = 2
 }
 struct TotalChartsView_Previews: PreviewProvider {
