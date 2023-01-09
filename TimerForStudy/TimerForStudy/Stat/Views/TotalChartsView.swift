@@ -71,6 +71,8 @@ struct TotalChartsView: View {
 //                        }
                     }
                 }
+                .animation(.spring(), value: calculator.seriesData)
+                
                 FriendList(friends: $calculator.stat.friends)
                     .frame(height: 200)
             }
