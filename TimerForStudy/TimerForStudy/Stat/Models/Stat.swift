@@ -10,10 +10,14 @@ import Foundation
 /// Stat Model
 struct Stat {
     let name: String
-    var friends: [Friend]
+    var friends: [Friend] {
+        didSet {
+            updateSeries()
+        }
+    }
     let total: TimeInterval
     var monthlyData: [Monthly]
-    let seriesData: [Series]
+    var seriesData: [Series]
     
     init(_ name: String, _ monthlyData: [Monthly], _ friends: [Friend]) {
         let total = monthlyData.reduce(into: 0) { total, element in
@@ -23,8 +27,9 @@ struct Stat {
         var seriesData: [Series] = [
             .init(name: name, monthlyData: monthlyData)
         ]
+        
         for friend in friends {
-            if friend.isFavorite, let monthlyData = friend.monthlyData {
+            if friend.isPeeping, let monthlyData = friend.monthlyData {
                 seriesData.append(.init(name: friend.name, monthlyData: monthlyData))
             }
         }
@@ -39,5 +44,18 @@ struct Stat {
     func fetchDailyData(_ date: Date) -> Daily? {
         guard let month = monthlyData.first(where: { DateConverter.monthFormatter.string(from: date) == DateConverter.monthFormatter.string(from: $0.month) }) else { return nil }
         return month.fetchDailyData(date)
+    }
+    
+    mutating func updateSeries() {
+        var seriesData: [Series] = [
+            .init(name: name, monthlyData: monthlyData)
+        ]
+        for friend in friends {
+            if friend.isPeeping, let monthlyData = friend.monthlyData {
+                seriesData.append(.init(name: friend.name, monthlyData: monthlyData))
+            }
+        }
+        
+        self.seriesData = seriesData
     }
 }
