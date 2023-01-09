@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // For test
 // mock object 생성해서 주입
@@ -82,11 +83,13 @@ private func createMockObject() -> Stat {
     
     let monthlyData_1 = Monthly(DateConverter.monthFormatter.date(from: "2023.01")!, [dailyData_1_1, dailyData_1_2, dailyData_1_5])
     
-    let stat = Stat("Yeolmok", [monthlyData_9, monthlyData_10, monthlyData_11, monthlyData_12, monthlyData_1])
+    let monthlyData = [monthlyData_9, monthlyData_10, monthlyData_11, monthlyData_12, monthlyData_1]
+    let friends = [createMockObject_friend()]
+    let stat = Stat("Yeolmok", monthlyData, friends)
     return stat
 }
 
-private func createMockObject_friend() -> Stat {
+private func createMockObject_friend() -> Friend {
     // 2022년 9월 데이터
     let programmingData_9_1 = Category(name: "프로그래밍", time: 1000)
     let algorithmData_9_1 = Category(name: "알고리즘", time: 5000)
@@ -159,15 +162,9 @@ private func createMockObject_friend() -> Stat {
     
     let monthlyData_1 = Monthly(DateConverter.monthFormatter.date(from: "2023.01")!, [dailyData_1_1, dailyData_1_2, dailyData_1_5])
     
-    let stat = Stat("Friend", [monthlyData_9, monthlyData_10, monthlyData_11, monthlyData_12, monthlyData_1])
-    return stat
+    let monthlyData = [monthlyData_9, monthlyData_10, monthlyData_11, monthlyData_12, monthlyData_1]
+    let friend = Friend(name: "Friend 1", image: Image("User1"), monthlyData, isFavorite: true)
+    return friend
 }
 
 let statRawData = createMockObject()
-let statRawDate_friend = createMockObject_friend()
-let seriesData: [Series] = [
-    .init(name: statRawData.name,
-          monthlyData: statRawData.monthlyData),
-    .init(name: statRawDate_friend.name,
-          monthlyData: statRawDate_friend.monthlyData)
-]

@@ -14,8 +14,7 @@ struct TotalStatView: View {
     var body: some View {
         VStack {
             DescriptionView(total: stat.total)
-            TotalChartsView(stat: stat,
-                            seriesData: seriesData)
+            TotalChartsView(calculator: TotalCalculator(stat: stat))
         }
         .padding(LayoutConstants.padding)
     }

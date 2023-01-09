@@ -17,6 +17,9 @@
 		6B2788452963426200206392 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 6B2788442963426200206392 /* FSCalendar */; };
 		6B2B1110296BEB8C0097F832 /* FriendRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B110F296BEB8C0097F832 /* FriendRow.swift */; };
 		6B2B1112296BEED60097F832 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1111296BEED60097F832 /* Friend.swift */; };
+		6B2B1116296C04DB0097F832 /* TotalCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1115296C04DB0097F832 /* TotalCalculator.swift */; };
+		6B2B1118296C052A0097F832 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1117296C052A0097F832 /* Series.swift */; };
+		6B2B111A296C14290097F832 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1119296C14290097F832 /* Loader.swift */; };
 		6B2D64C829620EF10009731C /* DailyStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64C729620EF10009731C /* DailyStatView.swift */; };
 		6B2D64CA29622C170009731C /* TotalStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64C929622C170009731C /* TotalStatView.swift */; };
 		6B2D64CD29622E0D0009731C /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64CC29622E0D0009731C /* Stat.swift */; };
@@ -79,6 +82,9 @@
 		6B1ECC4429349080007318DB /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 		6B2B110F296BEB8C0097F832 /* FriendRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRow.swift; sourceTree = "<group>"; };
 		6B2B1111296BEED60097F832 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		6B2B1115296C04DB0097F832 /* TotalCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCalculator.swift; sourceTree = "<group>"; };
+		6B2B1117296C052A0097F832 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
+		6B2B1119296C14290097F832 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		6B2D64C729620EF10009731C /* DailyStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStatView.swift; sourceTree = "<group>"; };
 		6B2D64C929622C170009731C /* TotalStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalStatView.swift; sourceTree = "<group>"; };
 		6B2D64CC29622E0D0009731C /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
@@ -163,13 +169,14 @@
 		6B1B123F2945AA7500140F05 /* Stat */ = {
 			isa = PBXGroup;
 			children = (
+				6B2B111B296C14D60097F832 /* Repository */,
+				6B2B1114296C04790097F832 /* Models */,
+				6B2B1113296C040C0097F832 /* ViewModels */,
 				6B2D64CB29622D840009731C /* Views */,
-				6B2D64CC29622E0D0009731C /* Stat.swift */,
 				6B4A0C9929637E4D00C6B92D /* Monthly.swift */,
 				6B4A0C9B29637E7C00C6B92D /* Daily.swift */,
 				6B2D64CE29622EBF0009731C /* Category.swift */,
 				6B17983E29649A170032FD1C /* StatRawData.swift */,
-				6B2B1111296BEED60097F832 /* Friend.swift */,
 			);
 			path = Stat;
 			sourceTree = "<group>";
@@ -182,14 +189,40 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		6B2B1113296C040C0097F832 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				6B2B1115296C04DB0097F832 /* TotalCalculator.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6B2B1114296C04790097F832 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6B2B1111296BEED60097F832 /* Friend.swift */,
+				6B2D64CC29622E0D0009731C /* Stat.swift */,
+				6B2B1117296C052A0097F832 /* Series.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6B2B111B296C14D60097F832 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				6B2B1119296C14290097F832 /* Loader.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		6B2D64CB29622D840009731C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6B74428A2963B0BB00F9FF30 /* TotalChartsView.swift */,
 				6B1B12432945AB2F00140F05 /* StatViewController.swift */,
 				6B2D64D7296241C70009731C /* DescriptionView.swift */,
 				6B74428C2963B93000F9FF30 /* PopoverButtonView.swift */,
 				6B2D64C929622C170009731C /* TotalStatView.swift */,
-				6B74428A2963B0BB00F9FF30 /* TotalChartsView.swift */,
 				6B2D64C729620EF10009731C /* DailyStatView.swift */,
 				6BEE5AE12968E39600230749 /* TimeChartsView.swift */,
 				6BEE5AE32968E3A600230749 /* PercentageChartsView.swift */,
@@ -498,10 +531,12 @@
 				E13730B229485C0800EE804A /* Reachability.swift in Sources */,
 				6B2D64D8296241C70009731C /* DescriptionView.swift in Sources */,
 				6B1B12442945AB2F00140F05 /* StatViewController.swift in Sources */,
+				6B2B1116296C04DB0097F832 /* TotalCalculator.swift in Sources */,
 				6B74428B2963B0BB00F9FF30 /* TotalChartsView.swift in Sources */,
 				6BEE5AE22968E39600230749 /* TimeChartsView.swift in Sources */,
 				6B1B12422945AAFA00140F05 /* TimerViewController.swift in Sources */,
 				6B1B123D2945AA3600140F05 /* TabBarController.swift in Sources */,
+				6B2B111A296C14290097F832 /* Loader.swift in Sources */,
 				E11BFEA929345A700017FBB0 /* AppDelegate.swift in Sources */,
 				E11BFEAB29345A700017FBB0 /* SceneDelegate.swift in Sources */,
 				6B7442892963AD2000F9FF30 /* DateConverter.swift in Sources */,
@@ -513,6 +548,7 @@
 				6B2D64CF29622EBF0009731C /* Category.swift in Sources */,
 				E13730B029485BE600EE804A /* NetworkManager.swift in Sources */,
 				E11BFEB329345A700017FBB0 /* TimerForStudy.xcdatamodeld in Sources */,
+				6B2B1118296C052A0097F832 /* Series.swift in Sources */,
 				6B74428D2963B93000F9FF30 /* PopoverButtonView.swift in Sources */,
 				6BEE5AE42968E3A600230749 /* PercentageChartsView.swift in Sources */,
 				6B2D64CD29622E0D0009731C /* Stat.swift in Sources */,
