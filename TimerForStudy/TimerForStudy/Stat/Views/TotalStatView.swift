@@ -16,12 +16,7 @@ struct TotalStatView: View {
             DescriptionView(total: stat.total)
             TotalChartsView(calculator: TotalCalculator(stat: stat))
         }
-        .padding(LayoutConstants.padding)
     }
-}
-
-private enum LayoutConstants {
-    static let padding: CGFloat = 20
 }
 
 struct TotalStatView_Previews: PreviewProvider {

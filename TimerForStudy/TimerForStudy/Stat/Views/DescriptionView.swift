@@ -18,11 +18,16 @@ struct DescriptionView: View {
             Text(DateConverter.timeFormatter.string(from: total)!)
                 .font(.system(.subheadline, weight: .semibold))
         }
+        .padding(LayoutConstants.padding)
     }
 }
 
 private enum TextConstants {
     static let title = "Total"
+}
+
+private enum LayoutConstants {
+    static let padding: CGFloat = 10
 }
 
 struct DescriptionView_Previews: PreviewProvider {

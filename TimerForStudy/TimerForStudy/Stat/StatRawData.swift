@@ -84,12 +84,12 @@ private func createMockObject() -> Stat {
     let monthlyData_1 = Monthly(DateConverter.monthFormatter.date(from: "2023.01")!, [dailyData_1_1, dailyData_1_2, dailyData_1_5])
     
     let monthlyData = [monthlyData_9, monthlyData_10, monthlyData_11, monthlyData_12, monthlyData_1]
-    let friends = [createMockObject_friend()]
-    let stat = Stat("Yeolmok", monthlyData, friends)
+    let friends = [createMonthlyData_friend()]
+    let stat = Stat("Yeolmok", monthlyData, [friendData])
     return stat
 }
 
-private func createMockObject_friend() -> Friend {
+private func createMonthlyData_friend() -> [Monthly] {
     // 2022년 9월 데이터
     let programmingData_9_1 = Category(name: "프로그래밍", time: 1000)
     let algorithmData_9_1 = Category(name: "알고리즘", time: 5000)
@@ -163,8 +163,9 @@ private func createMockObject_friend() -> Friend {
     let monthlyData_1 = Monthly(DateConverter.monthFormatter.date(from: "2023.01")!, [dailyData_1_1, dailyData_1_2, dailyData_1_5])
     
     let monthlyData = [monthlyData_9, monthlyData_10, monthlyData_11, monthlyData_12, monthlyData_1]
-    let friend = Friend(name: "Friend 1", image: Image("User1"), monthlyData, isFavorite: true)
-    return friend
+    return monthlyData
 }
 
+let monthlyData_friend = createMonthlyData_friend()
+let friendData = Friend(name: "Friend 1", image: Image("User1"), monthlyData_friend, isPeeping: true)
 let statRawData = createMockObject()

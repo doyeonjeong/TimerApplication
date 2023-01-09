@@ -58,19 +58,21 @@ struct TotalChartsView: View {
                         .foregroundStyle(by: .value(TextConstants.nameLabel, series.name))
                         .interpolationMethod(.catmullRom)
                         
-                        if chartStyle == .monthly {
-                            RuleMark(
-                                y: .value(TextConstants.average, calculator.average(series.monthlyData)/NumberConstants.hour)
-                            )
-                            .foregroundStyle(by: .value(TextConstants.nameLabel, series.name))
-                            .lineStyle(StrokeStyle(lineWidth: LayoutConstants.ruleMarkWidth))
-                            .annotation(position: .top, alignment: .leading) {
-                                Text("\(DateConverter.timeFormatter.string(from: calculator.average(series.monthlyData))!)")
-                                    .font(.subheadline)
-                            }
-                        }
+//                        if chartStyle == .monthly {
+//                            RuleMark(
+//                                y: .value(TextConstants.average, calculator.average(series.monthlyData)/NumberConstants.hour)
+//                            )
+//                            .foregroundStyle(by: .value(TextConstants.nameLabel, series.name))
+//                            .lineStyle(StrokeStyle(lineWidth: LayoutConstants.ruleMarkWidth))
+//                            .annotation(position: .top, alignment: .leading) {
+//                                Text("\(DateConverter.timeFormatter.string(from: calculator.average(series.monthlyData))!)")
+//                                    .font(.subheadline)
+//                            }
+//                        }
                     }
                 }
+                FriendList(friends: $calculator.stat.friends)
+                    .frame(height: 200)
             }
         }
         .padding(LayoutConstants.padding)
@@ -107,7 +109,7 @@ private enum NumberConstants {
 }
 
 private enum LayoutConstants {
-    static let padding: CGFloat = 20
+    static let padding: CGFloat = 10
     static let spacing: CGFloat = 8
     static let ruleMarkWidth: CGFloat = 2
 }
