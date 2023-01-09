@@ -20,6 +20,7 @@
 		6B2B1116296C04DB0097F832 /* TotalCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1115296C04DB0097F832 /* TotalCalculator.swift */; };
 		6B2B1118296C052A0097F832 /* Series.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1117296C052A0097F832 /* Series.swift */; };
 		6B2B111A296C14290097F832 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1119296C14290097F832 /* Loader.swift */; };
+		6B2B111D296C1D7B0097F832 /* FriendList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B111C296C1D7B0097F832 /* FriendList.swift */; };
 		6B2D64C829620EF10009731C /* DailyStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64C729620EF10009731C /* DailyStatView.swift */; };
 		6B2D64CA29622C170009731C /* TotalStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64C929622C170009731C /* TotalStatView.swift */; };
 		6B2D64CD29622E0D0009731C /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2D64CC29622E0D0009731C /* Stat.swift */; };
@@ -85,6 +86,7 @@
 		6B2B1115296C04DB0097F832 /* TotalCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCalculator.swift; sourceTree = "<group>"; };
 		6B2B1117296C052A0097F832 /* Series.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Series.swift; sourceTree = "<group>"; };
 		6B2B1119296C14290097F832 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		6B2B111C296C1D7B0097F832 /* FriendList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendList.swift; sourceTree = "<group>"; };
 		6B2D64C729620EF10009731C /* DailyStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStatView.swift; sourceTree = "<group>"; };
 		6B2D64C929622C170009731C /* TotalStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalStatView.swift; sourceTree = "<group>"; };
 		6B2D64CC29622E0D0009731C /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
@@ -218,15 +220,16 @@
 		6B2D64CB29622D840009731C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6B74428A2963B0BB00F9FF30 /* TotalChartsView.swift */,
 				6B1B12432945AB2F00140F05 /* StatViewController.swift */,
 				6B2D64D7296241C70009731C /* DescriptionView.swift */,
 				6B74428C2963B93000F9FF30 /* PopoverButtonView.swift */,
 				6B2D64C929622C170009731C /* TotalStatView.swift */,
+				6B74428A2963B0BB00F9FF30 /* TotalChartsView.swift */,
 				6B2D64C729620EF10009731C /* DailyStatView.swift */,
 				6BEE5AE12968E39600230749 /* TimeChartsView.swift */,
 				6BEE5AE32968E3A600230749 /* PercentageChartsView.swift */,
 				6B2B110F296BEB8C0097F832 /* FriendRow.swift */,
+				6B2B111C296C1D7B0097F832 /* FriendList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				6B4A0C9C29637E7C00C6B92D /* Daily.swift in Sources */,
 				E13730B229485C0800EE804A /* Reachability.swift in Sources */,
 				6B2D64D8296241C70009731C /* DescriptionView.swift in Sources */,
+				6B2B111D296C1D7B0097F832 /* FriendList.swift in Sources */,
 				6B1B12442945AB2F00140F05 /* StatViewController.swift in Sources */,
 				6B2B1116296C04DB0097F832 /* TotalCalculator.swift in Sources */,
 				6B74428B2963B0BB00F9FF30 /* TotalChartsView.swift in Sources */,
