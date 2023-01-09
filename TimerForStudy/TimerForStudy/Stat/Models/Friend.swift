@@ -9,16 +9,26 @@ import Foundation
 import SwiftUI
 
 /// Friend Model
-/// isFavorite이 true일때, 모델에서 monthlyData fetch
-final class Friend: ObservableObject {
+/// isPeeping이 true일때, 모델에서 monthlyData fetch
+struct Friend: Identifiable {
 //    var loader: Loader
     let name: String
     let image: Image
-    @Published var monthlyData: [Monthly]?
-    @Published var isFavorite: Bool
-//    @Published var isFavorite: Bool {
+    var monthlyData: [Monthly]?
+    var isPeeping: Bool {
+        didSet {
+            if isPeeping == true {
+                monthlyData = monthlyData_friend
+            } else {
+                monthlyData = nil
+            }
+        }
+    }
+    
+    var id = UUID()
+//    @Published var isPeeping: Bool {
 //        didSet {
-//            if isFavorite == true {
+//            if isPeeping == true {
 //                monthlyData = loader.downloadMonthlyDataOfFriend()
 //            } else {
 //                monthlyData = nil
@@ -26,24 +36,24 @@ final class Friend: ObservableObject {
 //        }
 //    }
     
-//    init(loader: Loader, name: String, image: Image, isFavorite: Bool) {
+//    init(loader: Loader, name: String, image: Image, isPeeping: Bool) {
 //        self.loader = loader
 //        self.name = name
 //        self.image = image
-//        self.isFavorite = isFavorite
+//        self.isPeeping = isPeeping
 //        // monthlyData fetch
-//        if isFavorite {
+//        if isPeeping {
 //            self.monthlyData = loader.downloadMonthlyDataOfFriend()
 //        }
 //    }
     
-    init(name: String, image: Image, _ monthlyData: [Monthly]? = nil, isFavorite: Bool) {
+    init(name: String, image: Image, _ monthlyData: [Monthly]? = nil, isPeeping: Bool) {
         self.name = name
         self.image = image
         self.monthlyData = monthlyData
-        self.isFavorite = isFavorite
+        self.isPeeping = isPeeping
         // monthlyData fetch
-//        if isFavorite {
+//        if isPeeping {
 //            self.monthlyData = loader.downloadMonthlyDataOfFriend()
 //        }
     }
