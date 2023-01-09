@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FriendRow: View {
-    @ObservedObject var friend: Friend
+    @Binding var friend: Friend
     
     var body: some View {
         HStack {
@@ -16,17 +16,15 @@ struct FriendRow: View {
                 .resizable()
                 .frame(width: 50, height: 50)
             Text(friend.name)
+            
             Spacer()
             
             Button(action: {
-                friend.isFavorite.toggle()
+                friend.isPeeping.toggle()
             }, label: {
-                if friend.isFavorite {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                } else {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.gray)
+                if friend.isPeeping {
+                    Image(systemName: "eyes")
+                        .foregroundColor(.black)
                 }
             })
         }
@@ -35,6 +33,6 @@ struct FriendRow: View {
 
 struct FriendRow_Previews: PreviewProvider {
     static var previews: some View {
-        FriendRow(friend: .init(name: "김동욱", image: Image(systemName: "person.crop.circle"), isFavorite: true))
+        FriendRow(friend: .constant(.init(name: "김동욱", image: Image("User1"), isPeeping: true)))
     }
 }
