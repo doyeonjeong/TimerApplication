@@ -25,8 +25,8 @@ private enum LayoutConstants {
 struct FriendList_Previews: PreviewProvider {
     static var previews: some View {
         FriendList(friends: .constant([
-            .init(name: "김동욱", image: Image("User1"), isPeeping: true),
-            .init(name: "열목이", image: Image("User2"), isPeeping: false)
+            .init(name: "김동욱", image: Image("User1"), isAccessEnabled: true, isPeeping: true),
+            .init(name: "열목이", image: Image("User2"), isAccessEnabled: false, isPeeping: false)
         ]))
     }
 }
