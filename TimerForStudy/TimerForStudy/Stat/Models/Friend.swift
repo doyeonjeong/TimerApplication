@@ -15,10 +15,15 @@ struct Friend: Identifiable {
     let name: String
     let image: Image
     var monthlyData: [Monthly]?
+    var isAccessEnabled: Bool
     var isPeeping: Bool {
         didSet {
-            if isPeeping == true {
-                monthlyData = monthlyData_friend
+            if isPeeping && isAccessEnabled {
+                if name == "정도연" {
+                    monthlyData = monthlyData_friend_1
+                } else if name == "유준용" {
+                    monthlyData = monthlyData_friend_3
+                }
             } else {
                 monthlyData = nil
             }
@@ -26,7 +31,7 @@ struct Friend: Identifiable {
     }
     
     var id = UUID()
-//    @Published var isPeeping: Bool {
+//    var isPeeping: Bool {
 //        didSet {
 //            if isPeeping == true {
 //                monthlyData = loader.downloadMonthlyDataOfFriend()
@@ -47,10 +52,11 @@ struct Friend: Identifiable {
 //        }
 //    }
     
-    init(name: String, image: Image, _ monthlyData: [Monthly]? = nil, isPeeping: Bool) {
+    init(name: String, image: Image, _ monthlyData: [Monthly]? = nil, isAccessEnabled: Bool, isPeeping: Bool) {
         self.name = name
         self.image = image
         self.monthlyData = monthlyData
+        self.isAccessEnabled = isAccessEnabled
         self.isPeeping = isPeeping
         // monthlyData fetch
 //        if isPeeping {
