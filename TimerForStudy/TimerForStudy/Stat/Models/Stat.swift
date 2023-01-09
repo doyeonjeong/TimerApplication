@@ -8,20 +8,32 @@
 import Foundation
 
 /// Stat Model
-final class Stat: ObservableObject {
+struct Stat {
     let name: String
-    var friends: [Friend]?
+    var friends: [Friend]
     let total: TimeInterval
-    @Published var monthlyData: [Monthly]
+    var monthlyData: [Monthly]
+    let seriesData: [Series]
     
-    init(_ name: String, _ monthlyData: [Monthly], _ friends: [Friend]? = nil) {
+    init(_ name: String, _ monthlyData: [Monthly], _ friends: [Friend]) {
         let total = monthlyData.reduce(into: 0) { total, element in
             total += element.total
         }
+        
+        var seriesData: [Series] = [
+            .init(name: name, monthlyData: monthlyData)
+        ]
+        for friend in friends {
+            if friend.isFavorite, let monthlyData = friend.monthlyData {
+                seriesData.append(.init(name: friend.name, monthlyData: monthlyData))
+            }
+        }
+        
         self.name = name
         self.total = total
         self.monthlyData = monthlyData
         self.friends = friends
+        self.seriesData = seriesData
     }
     
     func fetchDailyData(_ date: Date) -> Daily? {
