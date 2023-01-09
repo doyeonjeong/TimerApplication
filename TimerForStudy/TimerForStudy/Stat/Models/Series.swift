@@ -8,7 +8,11 @@
 import Foundation
 
 // 친구와 비교할 수 있는 차트를 구성하기 위한 struct
-struct Series: Identifiable {
+struct Series: Identifiable, Equatable {
+    static func == (lhs: Series, rhs: Series) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let name: String
     let monthlyData: [Monthly]
     
