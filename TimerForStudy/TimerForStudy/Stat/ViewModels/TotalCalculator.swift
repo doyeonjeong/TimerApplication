@@ -9,10 +9,14 @@ import Foundation
 
 /// TotalCharts View Model
 final class TotalCalculator: ObservableObject {
-    @Published private var stat: Stat
+    @Published var stat: Stat
     
     var monthlyData: [Monthly] {
         stat.monthlyData
+    }
+    
+    var friends: [Friend] {
+        stat.friends
     }
     
     var seriesData: [Series] {
