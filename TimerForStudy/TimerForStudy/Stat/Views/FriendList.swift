@@ -14,6 +14,7 @@ struct FriendList: View {
             FriendRow(friend: friend)
         }
         .scrollContentBackground(.hidden)
+        .scrollIndicators(.hidden)
     }
 }
 
