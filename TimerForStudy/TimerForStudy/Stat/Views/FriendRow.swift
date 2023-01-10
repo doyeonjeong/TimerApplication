@@ -21,9 +21,7 @@ struct FriendRow: View {
             
             Spacer()
             
-            Button(action: {
-                friend.isPeeping.toggle()
-            }, label: {
+            Button(action: { friend.isPeeping.toggle() }) {
                 if friend.isAccessEnabled && friend.isPeeping {
                     Image(systemName: TextConstants.eyesIconName)
                         .foregroundColor(.blue)
@@ -34,7 +32,7 @@ struct FriendRow: View {
                     Image(systemName: TextConstants.xCircleiconName)
                         .foregroundColor(.red)
                 }
-            })
+            }
         }
     }
 }
