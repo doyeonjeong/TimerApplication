@@ -10,7 +10,7 @@ import UIKit
 import Combine
 
 /// CalendarView delegate class
-class CalendarDatabase: NSObject {
+final class CalendarDatabase: NSObject {
     let stat: Stat
     let publisher = PassthroughSubject<Date, Never>()
     
