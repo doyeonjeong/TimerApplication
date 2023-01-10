@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FriendList: View {
     @Binding var friends: [Friend]
+    
     var body: some View {
         List($friends) { friend in
             FriendRow(friend: friend)
@@ -16,10 +17,6 @@ struct FriendList: View {
         .scrollContentBackground(.hidden)
         .scrollIndicators(.hidden)
     }
-}
-
-private enum LayoutConstants {
-    static let padding: CGFloat = 20
 }
 
 struct FriendList_Previews: PreviewProvider {
