@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import Combine
 
 final class StatViewController: UIViewController {
 
@@ -16,10 +17,12 @@ final class StatViewController: UIViewController {
     
     private var calendarView: UICalendarView!
     private var calendarDatabase = CalendarDatabase(stat: statRawData)
+    private var subscriptions = [AnyCancellable]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCalendar()
+        setBindings()
         configureAndEmbedView()
         configureUI()
     }
@@ -66,7 +69,7 @@ extension StatViewController {
             calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
             calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.spacing),
-            calendarView.heightAnchor.constraint(equalToConstant: LayoutConstants.calendarViewHeight),
+//            calendarView.heightAnchor.constraint(equalToConstant: LayoutConstants.calendarViewHeight),
             
             totalStatHostingController.view.topAnchor.constraint(equalTo: calendarView.bottomAnchor),
             totalStatHostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
@@ -112,6 +115,13 @@ extension StatViewController {
         } else {
 //            hostingController.rootView = EmptyView()
         }
+    }
+    
+    private func setBindings() {
+        calendarDatabase.publisher.sink { receivedDate in
+            self.updateDailyCharts(receivedDate)
+        }
+        .store(in: &subscriptions)
     }
 }
 
