@@ -7,9 +7,12 @@
 
 import Foundation
 import UIKit
+import Combine
 
+/// CalendarView delegate class
 class CalendarDatabase: NSObject {
     let stat: Stat
+    let publisher = PassthroughSubject<Date, Never>()
     
     init(stat: Stat) {
         self.stat = stat
@@ -34,9 +37,14 @@ extension CalendarDatabase: UICalendarViewDelegate, UICalendarSelectionSingleDat
         //
     }
     
+    func dateSelection(_ selection: UICalendarSelectionSingleDate, canSelectDate dateComponents: DateComponents?) -> Bool {
+        return dateComponents != nil
+    }
+    
     // 날짜 선택
     // StatView update
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
-        // update rootView
+        guard let date = dateComponents?.date else { return }
+        publisher.send(date)
     }
 }
