@@ -14,7 +14,6 @@
 		6B1B12462945AB3F00140F05 /* UserMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B12452945AB3F00140F05 /* UserMainViewController.swift */; };
 		6B1ECC4529349080007318DB /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1ECC4429349080007318DB /* KakaoLoginManager.swift */; };
 		6B1ECC482934922E007318DB /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 6B1ECC472934922E007318DB /* KakaoSDKUser */; };
-		6B2788452963426200206392 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 6B2788442963426200206392 /* FSCalendar */; };
 		6B2B1110296BEB8C0097F832 /* FriendRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B110F296BEB8C0097F832 /* FriendRow.swift */; };
 		6B2B1112296BEED60097F832 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1111296BEED60097F832 /* Friend.swift */; };
 		6B2B1116296C04DB0097F832 /* TotalCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2B1115296C04DB0097F832 /* TotalCalculator.swift */; };
@@ -29,6 +28,7 @@
 		6B44846D29348CF50025260C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B44846C29348CF50025260C /* LoginViewController.swift */; };
 		6B4A0C9A29637E4D00C6B92D /* Monthly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A0C9929637E4D00C6B92D /* Monthly.swift */; };
 		6B4A0C9C29637E7C00C6B92D /* Daily.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A0C9B29637E7C00C6B92D /* Daily.swift */; };
+		6B4FDECB296D0D590059DB08 /* CalendarDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4FDECA296D0D590059DB08 /* CalendarDatabase.swift */; };
 		6B6A290A2935BA65009D8905 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6B6A29092935BA65009D8905 /* .swiftlint.yml */; };
 		6B6A290D2935BE2C009D8905 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6A290C2935BE2C009D8905 /* Account.swift */; };
 		6B7442892963AD2000F9FF30 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7442882963AD2000F9FF30 /* DateConverter.swift */; };
@@ -95,6 +95,7 @@
 		6B44846C29348CF50025260C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6B4A0C9929637E4D00C6B92D /* Monthly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monthly.swift; sourceTree = "<group>"; };
 		6B4A0C9B29637E7C00C6B92D /* Daily.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Daily.swift; sourceTree = "<group>"; };
+		6B4FDECA296D0D590059DB08 /* CalendarDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDatabase.swift; sourceTree = "<group>"; };
 		6B6A29092935BA65009D8905 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		6B6A290C2935BE2C009D8905 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		6B7442882963AD2000F9FF30 /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
@@ -130,7 +131,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B1ECC482934922E007318DB /* KakaoSDKUser in Frameworks */,
-				6B2788452963426200206392 /* FSCalendar in Frameworks */,
 				E1982D6D29486C5B008EE0DF /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,6 +171,7 @@
 		6B1B123F2945AA7500140F05 /* Stat */ = {
 			isa = PBXGroup;
 			children = (
+				6B4FDEC9296D0D460059DB08 /* Calendar */,
 				6B2B111B296C14D60097F832 /* Repository */,
 				6B2B1114296C04790097F832 /* Models */,
 				6B2B1113296C040C0097F832 /* ViewModels */,
@@ -240,6 +241,14 @@
 				6B6A29052935AF90009D8905 /* Login */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		6B4FDEC9296D0D460059DB08 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				6B4FDECA296D0D590059DB08 /* CalendarDatabase.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		6B6A29052935AF90009D8905 /* Login */ = {
@@ -379,7 +388,6 @@
 			packageProductDependencies = (
 				6B1ECC472934922E007318DB /* KakaoSDKUser */,
 				E1982D6C29486C5B008EE0DF /* Lottie */,
-				6B2788442963426200206392 /* FSCalendar */,
 			);
 			productName = TimerForStudy;
 			productReference = E11BFEA529345A700017FBB0 /* TimerForStudy.app */;
@@ -456,7 +464,6 @@
 			packageReferences = (
 				6B1ECC462934922E007318DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				E1982D6B29486C5B008EE0DF /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				6B2788432963426200206392 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = E11BFEA629345A700017FBB0 /* Products */;
 			projectDirPath = "";
@@ -549,6 +556,7 @@
 				6B2D64C829620EF10009731C /* DailyStatView.swift in Sources */,
 				6B1ECC4529349080007318DB /* KakaoLoginManager.swift in Sources */,
 				6B2D64CA29622C170009731C /* TotalStatView.swift in Sources */,
+				6B4FDECB296D0D590059DB08 /* CalendarDatabase.swift in Sources */,
 				6B2D64CF29622EBF0009731C /* Category.swift in Sources */,
 				E13730B029485BE600EE804A /* NetworkManager.swift in Sources */,
 				E11BFEB329345A700017FBB0 /* TimerForStudy.xcdatamodeld in Sources */,
@@ -915,14 +923,6 @@
 				kind = branch;
 			};
 		};
-		6B2788432963426200206392 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		E1982D6B29486C5B008EE0DF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -938,11 +938,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6B1ECC462934922E007318DB /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKUser;
-		};
-		6B2788442963426200206392 /* FSCalendar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6B2788432963426200206392 /* XCRemoteSwiftPackageReference "FSCalendar" */;
-			productName = FSCalendar;
 		};
 		E1982D6C29486C5B008EE0DF /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

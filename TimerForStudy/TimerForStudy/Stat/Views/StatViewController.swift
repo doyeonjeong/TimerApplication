@@ -7,7 +7,6 @@
 
 import UIKit
 import SwiftUI
-import FSCalendar
 
 final class StatViewController: UIViewController {
 
@@ -15,10 +14,8 @@ final class StatViewController: UIViewController {
     private var dailyStatHostingController: UIHostingController<DailyStatView>!
     private var totalStatHostingController: UIHostingController<PopoverButtonView>!
     
-    private let calendarView: FSCalendar = {
-        let calendar = FSCalendar()
-        return calendar
-    }()
+    private var calendarView: UICalendarView!
+    private var calendarDatabase = CalendarDatabase(stat: statRawData)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,10 +81,31 @@ extension StatViewController {
     }
     
     private func configureCalendar() {
-        calendarView.dataSource = self
-        calendarView.delegate = self
+        // configure
+        let calendarView = UICalendarView()
+        let gregorianCalendar = Calendar(identifier: .gregorian)
+        calendarView.calendar = gregorianCalendar
+        let dateSelection = UICalendarSelectionSingleDate(delegate: calendarDatabase)
+        calendarView.selectionBehavior = dateSelection
+        calendarView.locale = .current
+        calendarView.fontDesign = .rounded
+        
+        // range
+        let fromDataComponents = DateComponents(calendar: Calendar(identifier: .gregorian), year: 2022, month: 1, day: 1)
+        let endDateComponents = DateComponents(calendar: Calendar(identifier: .gregorian), year: 2023, month: 12, day: 1)
+        calendarView.visibleDateComponents = DateComponents(calendar: Calendar(identifier: .gregorian), year: 2023, month: 1, day: 1)
+        
+        guard let fromDate = fromDataComponents.date, let endDate = endDateComponents.date else { return }
+        let calendarViewDateRange = DateInterval(start: fromDate, end: endDate)
+        calendarView.availableDateRange = calendarViewDateRange
+        
+        calendarView.translatesAutoresizingMaskIntoConstraints = false
+        self.calendarView = calendarView
+        view.addSubview(calendarView)
+        calendarView.delegate = calendarDatabase
     }
     
+    // StatView update
     private func updateDailyCharts(_ date: Date) {
         if let dailyData = stat.fetchDailyData(date) {
             dailyStatHostingController.rootView = DailyStatView(dailyData: dailyData)
@@ -97,34 +115,9 @@ extension StatViewController {
     }
 }
 
-// MARK: - CanlendarView 관련
-extension StatViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
-    // 날짜 선택
-    // 일간 차트 present
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        updateDailyCharts(date)
-    }
-    
-    // 공부한 날은 UIColor 적용
-    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
-        // 공부한 적이 없는 달이라면 systemBackground 적용
-        guard let monthlyData = stat.monthlyData.first(where: { DateConverter.monthFormatter.string(from: $0.month) == DateConverter.monthFormatter.string(from: date) }) else {
-            cell.backgroundColor = .systemBackground
-            return
-        }
-        let days = monthlyData.dailyData.map { DateConverter.dayFormatter.string(from: $0.day) }
-        // 공부한 날이라면 systemOrange 적용
-        if days.contains(DateConverter.dayFormatter.string(from: date)) {
-            cell.backgroundColor = .systemOrange
-        } else {
-            cell.backgroundColor = .systemBackground
-        }
-    }
-}
-
 private enum LayoutConstants {
     static let spacing: CGFloat = 8
     static let bottomSpacing: CGFloat = 30
     static let buttonHeight: CGFloat = 30
-    static let calendarViewHeight: CGFloat = 300
+    static let calendarViewHeight: CGFloat = 400
 }
