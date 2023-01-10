@@ -12,15 +12,15 @@ import Charts
 ///  cumulative: 누적
 ///  monthly: 월간
 ///  category: 카테고리별 누적 시간
-private enum ChartStyles {
-    case cumulative
+enum ChartStyles {
     case monthly
+    case cumulative
     case category
 }
 
 /// 사용자의 통계를 다양한 차트로 시각화하는 View
 struct TotalChartsView: View {
-    @ObservedObject var calculator: TotalCalculator
+    @ObservedObject var calculator: Calculator
     @State private var chartStyle = ChartStyles.monthly
     
     var body: some View {
@@ -34,7 +34,7 @@ struct TotalChartsView: View {
             
             switch chartStyle {
             case .category:
-                Chart(calculator.accumulatedCategories(calculator.monthlyData)) { category in
+                Chart(calculator.accumulatedCategories) { category in
                     BarMark(
                         x: .value(TextConstants.timeLabel, category.time/NumberConstants.hour),
                         y: .value(TextConstants.categoryLabel, category.name)
@@ -49,26 +49,25 @@ struct TotalChartsView: View {
                 }
             default:
                 Chart(calculator.seriesData) { series in
-                    ForEach(data(series.monthlyData)!) { datum in
+                    ForEach(calculator.data(chartStyle, series)!) { datum in
                         LineMark(
-                            x: .value(TextConstants.nameLabel, datum.month, unit: .month),
+                            x: .value(TextConstants.monthLabel, datum.month, unit: .month),
                             y: .value(TextConstants.timeLabel, datum.total/NumberConstants.hour)
                         )
                         .symbol(by: .value(TextConstants.nameLabel, series.name))
                         .foregroundStyle(by: .value(TextConstants.nameLabel, series.name))
                         .interpolationMethod(.catmullRom)
-                        
-//                        if chartStyle == .monthly {
-//                            RuleMark(
-//                                y: .value(TextConstants.average, calculator.average(series.monthlyData)/NumberConstants.hour)
-//                            )
-//                            .foregroundStyle(by: .value(TextConstants.nameLabel, series.name))
-//                            .lineStyle(StrokeStyle(lineWidth: LayoutConstants.ruleMarkWidth))
-//                            .annotation(position: .top, alignment: .leading) {
-//                                Text("\(DateConverter.timeFormatter.string(from: calculator.average(series.monthlyData))!)")
-//                                    .font(.subheadline)
-//                            }
-//                        }
+                    }
+                    if chartStyle == .monthly {
+                        RuleMark(
+                            y: .value(TextConstants.average, calculator.average/NumberConstants.hour)
+                        )
+                        .foregroundStyle(by: .value(TextConstants.nameLabel, calculator.name))
+                        .lineStyle(StrokeStyle(lineWidth: LayoutConstants.ruleMarkWidth))
+                        .annotation(position: .top, alignment: .leading) {
+                            Text("\(DateConverter.timeFormatter.string(from: calculator.average)!)")
+                                .font(.subheadline)
+                        }
                     }
                 }
                 .animation(.spring(), value: calculator.seriesData)
@@ -79,18 +78,6 @@ struct TotalChartsView: View {
         }
         .padding(LayoutConstants.padding)
     }
-    
-    // chartStyle에 따라 다른 데이터 제공
-    private func data(_ monthlyData: [Monthly]) -> [Monthly]? {
-        switch chartStyle {
-        case .monthly:
-            return monthlyData
-        case .cumulative:
-            return calculator.accumulate(monthlyData)
-        default:
-            return nil
-        }
-    }
 }
 
 private enum TextConstants {
@@ -100,6 +87,7 @@ private enum TextConstants {
     static let category = "카테고리"
     static let nameLabel = "Name"
     static let timeLabel = "Time"
+    static let monthLabel = "Month"
     static let categoryLabel = "Category"
     static let minLabel = "Min"
     static let maxLabel = "Max"
@@ -117,6 +105,6 @@ private enum LayoutConstants {
 }
 struct TotalChartsView_Previews: PreviewProvider {
     static var previews: some View {
-        TotalChartsView(calculator: TotalCalculator(stat: statRawData))
+        TotalChartsView(calculator: Calculator(statRawData))
     }
 }
