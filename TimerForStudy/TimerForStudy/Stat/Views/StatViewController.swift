@@ -19,6 +19,19 @@ final class StatViewController: UIViewController {
     private var calendarDatabase = CalendarDatabase(stat: statRawData)
     private var subscriptions = [AnyCancellable]()
     
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private let statView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCalendar()
@@ -56,30 +69,45 @@ extension StatViewController {
     
     private func configureHierachy() {
         [calendarView, totalStatHostingController.view, dailyStatHostingController.view].forEach {
-            view.addSubview($0)
+            statView.addSubview($0)
         }
+        scrollView.addSubview(statView)
+        view.addSubview(scrollView)
     }
     
     private func configureLayout() {
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         totalStatHostingController.view.translatesAutoresizingMaskIntoConstraints = false
         dailyStatHostingController.view.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
-            calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.spacing),
-//            calendarView.heightAnchor.constraint(equalToConstant: LayoutConstants.calendarViewHeight),
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.spacing),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: LayoutConstants.bottomSpacing),
+            
+            statView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            statView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            statView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            statView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            
+            statView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
+            statView.heightAnchor.constraint(equalToConstant: LayoutConstants.statViewHeight),
+            
+            calendarView.topAnchor.constraint(equalTo: statView.topAnchor),
+            calendarView.leadingAnchor.constraint(equalTo: statView.leadingAnchor),
+            calendarView.trailingAnchor.constraint(equalTo: statView.trailingAnchor),
             
             totalStatHostingController.view.topAnchor.constraint(equalTo: calendarView.bottomAnchor),
-            totalStatHostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
-            totalStatHostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.spacing),
+            totalStatHostingController.view.leadingAnchor.constraint(equalTo: statView.leadingAnchor),
+            totalStatHostingController.view.trailingAnchor.constraint(equalTo: statView.trailingAnchor),
             totalStatHostingController.view.heightAnchor.constraint(equalToConstant: LayoutConstants.buttonHeight),
             
             dailyStatHostingController.view.topAnchor.constraint(equalTo: totalStatHostingController.view.bottomAnchor),
-            dailyStatHostingController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
-            dailyStatHostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.spacing),
-            dailyStatHostingController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -LayoutConstants.bottomSpacing)
+            dailyStatHostingController.view.leadingAnchor.constraint(equalTo: statView.leadingAnchor),
+            dailyStatHostingController.view.trailingAnchor.constraint(equalTo: statView.trailingAnchor),
+            dailyStatHostingController.view.heightAnchor.constraint(equalToConstant: LayoutConstants.dailyStatViewHeight)
         ])
     }
     
@@ -130,4 +158,6 @@ private enum LayoutConstants {
     static let bottomSpacing: CGFloat = 30
     static let buttonHeight: CGFloat = 30
     static let calendarViewHeight: CGFloat = 400
+    static let statViewHeight: CGFloat = 1000
+    static let dailyStatViewHeight: CGFloat = 400
 }

@@ -27,7 +27,7 @@ extension CalendarDatabase: UICalendarViewDelegate, UICalendarSelectionSingleDat
         let days = monthlyData.dailyData.map { DateConverter.dayFormatter.string(from: $0.day) }
         // 공부한 날이라면 표시
         if days.contains(DateConverter.dayFormatter.string(from: date)) {
-            return .image(UIImage(systemName: "book"))
+            return .image(UIImage(systemName: "book")?.withTintColor(.systemOrange, renderingMode: .alwaysOriginal))
         } else {
             return nil
         }
