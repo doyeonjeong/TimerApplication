@@ -13,9 +13,11 @@ struct PopoverButtonView: View {
     @State private var showingPopover = false
     
     var body: some View {
-        Button("Total") {
+        Button(action: {
             showingPopover.toggle()
-        }
+        }, label: {
+            Image(systemName: "plus.app")
+        })
         .padding(LayoutConstants.padding)
         .popover(isPresented: $showingPopover) {
             TotalStatView(stat: stat)
