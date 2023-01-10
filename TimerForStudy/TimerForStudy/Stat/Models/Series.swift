@@ -7,14 +7,13 @@
 
 import Foundation
 
-// 친구와 비교할 수 있는 차트를 구성하기 위한 struct
+// 친구의 데이터를 시각화하여, 다양한 차트를 구성하기 위한 struct
 struct Series: Identifiable, Equatable {
+    let name: String
+    let monthlyData: [Monthly]
+    var id = UUID()
+    
     static func == (lhs: Series, rhs: Series) -> Bool {
         lhs.id == rhs.id
     }
-    
-    let name: String
-    let monthlyData: [Monthly]
-    
-    var id: String { name }
 }
