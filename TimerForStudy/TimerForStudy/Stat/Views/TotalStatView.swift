@@ -14,7 +14,7 @@ struct TotalStatView: View {
     var body: some View {
         VStack {
             DescriptionView(total: stat.total)
-            TotalChartsView(calculator: TotalCalculator(stat: stat))
+            TotalChartsView(calculator: Calculator(stat))
         }
     }
 }
