@@ -19,16 +19,25 @@ final class StatViewController: UIViewController {
     private var calendarDatabase = CalendarDatabase(stat: statRawData)
     private var subscriptions = [AnyCancellable]()
     
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = TextConsstants.title
+        label.font = .systemFont(ofSize: LayoutConstants.titleFontSize, weight: .bold)
+        return label
+    }()
+    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.isScrollEnabled = true
         return scrollView
     }()
     
     private let statView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         return view
     }()
     
@@ -68,24 +77,36 @@ extension StatViewController {
     }
     
     private func configureHierachy() {
-        [calendarView, totalStatHostingController.view, dailyStatHostingController.view].forEach {
+        [calendarView, dailyStatHostingController.view].forEach {
             statView.addSubview($0)
         }
+        
         scrollView.addSubview(statView)
-        view.addSubview(scrollView)
+        
+        [titleLabel, totalStatHostingController.view, scrollView].forEach {
+            view.addSubview($0)
+        }
     }
     
     private func configureLayout() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         totalStatHostingController.view.translatesAutoresizingMaskIntoConstraints = false
         dailyStatHostingController.view.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
+            
+            totalStatHostingController.view.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
+            totalStatHostingController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.spacing),
+            totalStatHostingController.view.widthAnchor.constraint(equalToConstant: LayoutConstants.buttonLength),
+            totalStatHostingController.view.heightAnchor.constraint(equalToConstant: LayoutConstants.buttonLength),
+            
+            scrollView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: LayoutConstants.spacing),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LayoutConstants.spacing),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: LayoutConstants.bottomSpacing),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.spacing),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -LayoutConstants.bottomInset),
+//            scrollView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8),
             
             statView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             statView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
@@ -99,12 +120,7 @@ extension StatViewController {
             calendarView.leadingAnchor.constraint(equalTo: statView.leadingAnchor),
             calendarView.trailingAnchor.constraint(equalTo: statView.trailingAnchor),
             
-            totalStatHostingController.view.topAnchor.constraint(equalTo: calendarView.bottomAnchor),
-            totalStatHostingController.view.leadingAnchor.constraint(equalTo: statView.leadingAnchor),
-            totalStatHostingController.view.trailingAnchor.constraint(equalTo: statView.trailingAnchor),
-            totalStatHostingController.view.heightAnchor.constraint(equalToConstant: LayoutConstants.buttonHeight),
-            
-            dailyStatHostingController.view.topAnchor.constraint(equalTo: totalStatHostingController.view.bottomAnchor),
+            dailyStatHostingController.view.topAnchor.constraint(equalTo: calendarView.bottomAnchor),
             dailyStatHostingController.view.leadingAnchor.constraint(equalTo: statView.leadingAnchor),
             dailyStatHostingController.view.trailingAnchor.constraint(equalTo: statView.trailingAnchor),
             dailyStatHostingController.view.heightAnchor.constraint(equalToConstant: LayoutConstants.dailyStatViewHeight)
@@ -153,11 +169,15 @@ extension StatViewController {
     }
 }
 
+private enum TextConsstants {
+    static let title = "통계"
+}
+
 private enum LayoutConstants {
     static let spacing: CGFloat = 8
-    static let bottomSpacing: CGFloat = 30
-    static let buttonHeight: CGFloat = 30
-    static let calendarViewHeight: CGFloat = 400
-    static let statViewHeight: CGFloat = 1000
+    static let titleFontSize: CGFloat = 25
+    static let bottomInset: CGFloat = 100
+    static let buttonLength: CGFloat = 40
+    static let statViewHeight: CGFloat = 800
     static let dailyStatViewHeight: CGFloat = 400
 }
