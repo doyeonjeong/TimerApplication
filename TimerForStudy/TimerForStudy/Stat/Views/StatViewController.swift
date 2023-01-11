@@ -106,7 +106,6 @@ extension StatViewController {
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LayoutConstants.spacing),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -LayoutConstants.spacing),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -LayoutConstants.bottomInset),
-//            scrollView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8),
             
             statView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             statView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
