@@ -1,14 +1,14 @@
-# Project
+# Timer Application
 
 
 * Target Version: iOS 16
 * App Category: Education
 
 
-
-## SwiftLint
-
-`brew install swiftlint` 만 하면 됩니다. 안되면 아래 링크 참고
-
-* SwiftLint Doc: https://github.com/realm/SwiftLint/blob/main/README_KR.md
-* 설치 참고: https://applecider2020.tistory.com/47
+<br></br>
+## 역할
+|팀원|역할|
+|---|---|
+|김동욱|통계, 데이터 시각화|
+|유준용|타이머, 데이터 수집|
+|정도연|프로필, 디자인|
