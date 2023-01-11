@@ -60,6 +60,7 @@ extension StatViewController {
         view.backgroundColor = .systemBackground
         configureHierachy()
         configureLayout()
+        print("test")
     }
     
     // Embed SwiftUI View
