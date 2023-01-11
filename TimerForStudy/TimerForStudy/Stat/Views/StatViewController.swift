@@ -47,6 +47,7 @@ final class StatViewController: UIViewController {
         setBindings()
         configureAndEmbedView()
         configureUI()
+        print("test")
     }
     
     // SwiftUI View Model에 주입할 통계 데이터 가져오는 함수
