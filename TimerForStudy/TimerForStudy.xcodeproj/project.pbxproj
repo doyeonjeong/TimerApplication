@@ -36,6 +36,8 @@
 		6B74428D2963B93000F9FF30 /* PopoverButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B74428C2963B93000F9FF30 /* PopoverButtonView.swift */; };
 		6BEE5AE22968E39600230749 /* TimeChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEE5AE12968E39600230749 /* TimeChartsView.swift */; };
 		6BEE5AE42968E3A600230749 /* PercentageChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEE5AE32968E3A600230749 /* PercentageChartsView.swift */; };
+		8F46A567296D7AD100A71C95 /* UserMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F46A566296D7AD100A71C95 /* UserMainView.swift */; };
+		8F489CF8296ED8DD00BA8494 /* UserSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F489CF7296ED8DD00BA8494 /* UserSettingView.swift */; };
 		E11BFEA929345A700017FBB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11BFEA829345A700017FBB0 /* AppDelegate.swift */; };
 		E11BFEAB29345A700017FBB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11BFEAA29345A700017FBB0 /* SceneDelegate.swift */; };
 		E11BFEAD29345A700017FBB0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11BFEAC29345A700017FBB0 /* ViewController.swift */; };
@@ -103,6 +105,8 @@
 		6B74428C2963B93000F9FF30 /* PopoverButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverButtonView.swift; sourceTree = "<group>"; };
 		6BEE5AE12968E39600230749 /* TimeChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeChartsView.swift; sourceTree = "<group>"; };
 		6BEE5AE32968E3A600230749 /* PercentageChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageChartsView.swift; sourceTree = "<group>"; };
+		8F46A566296D7AD100A71C95 /* UserMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainView.swift; sourceTree = "<group>"; };
+		8F489CF7296ED8DD00BA8494 /* UserSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingView.swift; sourceTree = "<group>"; };
 		E11BFEA529345A700017FBB0 /* TimerForStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerForStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11BFEA829345A700017FBB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E11BFEAA29345A700017FBB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				6B1B12452945AB3F00140F05 /* UserMainViewController.swift */,
+				8F46A569296D7C0100A71C95 /* Views */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -275,6 +280,15 @@
 				6B7442882963AD2000F9FF30 /* DateConverter.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8F46A569296D7C0100A71C95 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8F46A566296D7AD100A71C95 /* UserMainView.swift */,
+				8F489CF7296ED8DD00BA8494 /* UserSettingView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E11BFE9C29345A700017FBB0 = {
@@ -529,8 +543,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F489CF8296ED8DD00BA8494 /* UserSettingView.swift in Sources */,
 				6B2B1110296BEB8C0097F832 /* FriendRow.swift in Sources */,
 				6B17983F29649A170032FD1C /* StatRawData.swift in Sources */,
+				8F46A567296D7AD100A71C95 /* UserMainView.swift in Sources */,
 				E137308C2948338A00EE804A /* UIView.swift in Sources */,
 				E137308A294831F100EE804A /* TimeManager.swift in Sources */,
 				E13730B429485C4500EE804A /* ShareConstant.swift in Sources */,
