@@ -37,7 +37,9 @@
 		6BEE5AE22968E39600230749 /* TimeChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEE5AE12968E39600230749 /* TimeChartsView.swift */; };
 		6BEE5AE42968E3A600230749 /* PercentageChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEE5AE32968E3A600230749 /* PercentageChartsView.swift */; };
 		8F46A567296D7AD100A71C95 /* UserMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F46A566296D7AD100A71C95 /* UserMainView.swift */; };
-		8F489CF8296ED8DD00BA8494 /* UserSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F489CF7296ED8DD00BA8494 /* UserSettingView.swift */; };
+		8F489CF8296ED8DD00BA8494 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F489CF7296ED8DD00BA8494 /* UserDetailView.swift */; };
+		8F5020DE29702D4600A3AEF9 /* MyProfileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5020DD29702D4600A3AEF9 /* MyProfileRow.swift */; };
+		8F5020E029702FA900A3AEF9 /* FollowersRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5020DF29702FA900A3AEF9 /* FollowersRow.swift */; };
 		8FD9DB74296F19AF00802DDA /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD9DB73296F19AF00802DDA /* UIColor.swift */; };
 		E11BFEA929345A700017FBB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11BFEA829345A700017FBB0 /* AppDelegate.swift */; };
 		E11BFEAB29345A700017FBB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11BFEAA29345A700017FBB0 /* SceneDelegate.swift */; };
@@ -107,7 +109,9 @@
 		6BEE5AE12968E39600230749 /* TimeChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeChartsView.swift; sourceTree = "<group>"; };
 		6BEE5AE32968E3A600230749 /* PercentageChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageChartsView.swift; sourceTree = "<group>"; };
 		8F46A566296D7AD100A71C95 /* UserMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMainView.swift; sourceTree = "<group>"; };
-		8F489CF7296ED8DD00BA8494 /* UserSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingView.swift; sourceTree = "<group>"; };
+		8F489CF7296ED8DD00BA8494 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		8F5020DD29702D4600A3AEF9 /* MyProfileRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileRow.swift; sourceTree = "<group>"; };
+		8F5020DF29702FA900A3AEF9 /* FollowersRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersRow.swift; sourceTree = "<group>"; };
 		8FD9DB73296F19AF00802DDA /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		E11BFEA529345A700017FBB0 /* TimerForStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerForStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E11BFEA829345A700017FBB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -288,7 +292,9 @@
 			isa = PBXGroup;
 			children = (
 				8F46A566296D7AD100A71C95 /* UserMainView.swift */,
-				8F489CF7296ED8DD00BA8494 /* UserSettingView.swift */,
+				8F489CF7296ED8DD00BA8494 /* UserDetailView.swift */,
+				8F5020DD29702D4600A3AEF9 /* MyProfileRow.swift */,
+				8F5020DF29702FA900A3AEF9 /* FollowersRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -546,7 +552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F489CF8296ED8DD00BA8494 /* UserSettingView.swift in Sources */,
+				8F489CF8296ED8DD00BA8494 /* UserDetailView.swift in Sources */,
 				6B2B1110296BEB8C0097F832 /* FriendRow.swift in Sources */,
 				6B17983F29649A170032FD1C /* StatRawData.swift in Sources */,
 				8F46A567296D7AD100A71C95 /* UserMainView.swift in Sources */,
@@ -558,10 +564,12 @@
 				E11BFEAD29345A700017FBB0 /* ViewController.swift in Sources */,
 				6B4A0C9C29637E7C00C6B92D /* Daily.swift in Sources */,
 				E13730B229485C0800EE804A /* Reachability.swift in Sources */,
+				8F5020E029702FA900A3AEF9 /* FollowersRow.swift in Sources */,
 				6B2D64D8296241C70009731C /* DescriptionView.swift in Sources */,
 				6B2B111D296C1D7B0097F832 /* FriendList.swift in Sources */,
 				6B1B12442945AB2F00140F05 /* StatViewController.swift in Sources */,
 				6B2B1116296C04DB0097F832 /* Calculator.swift in Sources */,
+				8F5020DE29702D4600A3AEF9 /* MyProfileRow.swift in Sources */,
 				6B74428B2963B0BB00F9FF30 /* TotalChartsView.swift in Sources */,
 				6BEE5AE22968E39600230749 /* TimeChartsView.swift in Sources */,
 				6B1B12422945AAFA00140F05 /* TimerViewController.swift in Sources */,

@@ -11,83 +11,22 @@ struct UserMainView: View {
     var body: some View {
         NavigationView {
             List {
-                HStack {
-                    // MyProfile
-                    Image("MyProfile")
-                        .resizable()
-                        .clipShape(Circle())
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 100)
-                    VStack(alignment: .leading, spacing: 15) {
-                        Text("닉네임")
-                            .bold()
-                            .font(.title2)
-                        Text("상태메세지")
-                            .multilineTextAlignment(.leading)
+                ZStack {
+                    NavigationLink(destination: UserDetailView()) {
+                        EmptyView()
                     }
-                    Spacer()
-                    Text("D-Day")
-                        .padding(6)
-                        .background(content: {
-                            Color.gray.opacity(0.20)
-                        })
-                        .cornerRadius(10)
-                }//: HStack
-                    .frame(height: 120)
-                    .padding(.leading, -16)
-                    .padding(.top, -16)
+                    .opacity(0.0)
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    MyProfileRow()
+                }
                 
                 Section {
                     // Followers
-                    HStack {
-                        // User1
-                        Image("User1")
-                            .resizable()
-                            .clipShape(Circle())
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100)
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text("닉네임")
-                                .bold()
-                                .font(.title3)
-                            Text("상태메세지")
-                                .multilineTextAlignment(.leading)
-                        }
-                        Spacer()
-                        Text("D-Day")
-                            .padding(6)
-                            .background(content: {
-                                Color.gray.opacity(0.20)
-                            })
-                            .cornerRadius(10)
-                    }//: HStack
-                    .frame(height: 80)
-                    .padding(.leading, -16)
-                    
-                    HStack {
-                        // User2
-                        Image("User2")
-                            .resizable()
-                            .clipShape(Circle())
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100)
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text("닉네임")
-                                .bold()
-                                .font(.title3)
-                            Text("상태메세지")
-                                .multilineTextAlignment(.leading)
-                        }
-                        Spacer()
-                        Text("D-Day")
-                            .padding(6)
-                            .background(content: {
-                                Color.gray.opacity(0.20)
-                            })
-                            .cornerRadius(10)
-                    }//: HStack
-                    .frame(height: 80)
-                    .padding(.leading, -16)
+                    FollowersRow(followerImage: "User1", nickname: "닉네임1", statusMessage: "상태메세지1", Dday: "D-14")
+                    FollowersRow(followerImage: "User2", nickname: "닉네임2", statusMessage: "상태메세지2", Dday: "D-30")
+                    FollowersRow(followerImage: "User3", nickname: "닉네임3", statusMessage: "상태메세지3", Dday: "D-50")
+                    FollowersRow(followerImage: "User4", nickname: "닉네임4", statusMessage: "상태메세지4", Dday: "D-100")
                     
                 } header: {
                     Text("Followers")
@@ -97,7 +36,6 @@ struct UserMainView: View {
                         .padding(.leading, -16)
                         .foregroundColor(.black)
                 }
-                                
             }//: List
         }//: NavigationView
     }
